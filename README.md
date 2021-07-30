@@ -441,6 +441,26 @@ iperf3 can make diff results from sender point of view and from receiver point o
 -- and you can see that for kernel4 similar algorithm works more accurate giving higher results (since the rtt/etc measurements in kernel3 much more noisy than in kernel4).
 
 
+
+or 5 connections kernel4 for pk3c using cell-phone internet (slower connection where the bottleneck 12.7 Mbits/sec is speed of phone connection):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.20  sec  28.7 MBytes  4.00 Mbits/sec                  receiver
+[  8]   0.00-60.20  sec  15.9 MBytes  2.22 Mbits/sec                  receiver
+[ 10]   0.00-60.20  sec  18.7 MBytes  2.60 Mbits/sec                  receiver
+[ 12]   0.00-60.20  sec  12.5 MBytes  1.75 Mbits/sec                  receiver
+[ 14]   0.00-60.20  sec  15.6 MBytes  2.17 Mbits/sec                  receiver
+[SUM]   0.00-60.20  sec  91.3 MBytes  12.7 Mbits/sec                  receiver
+, or similar for cubic (so cubic balancing better in this case, but PK3C a little bit faster):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.35  sec  18.9 MBytes  2.62 Mbits/sec                  receiver
+[  8]   0.00-60.35  sec  20.5 MBytes  2.85 Mbits/sec                  receiver
+[ 10]   0.00-60.35  sec  17.0 MBytes  2.36 Mbits/sec                  receiver
+[ 12]   0.00-60.35  sec  16.9 MBytes  2.35 Mbits/sec                  receiver
+[ 14]   0.00-60.35  sec  17.7 MBytes  2.45 Mbits/sec                  receiver
+[SUM]   0.00-60.35  sec  90.9 MBytes  12.6 Mbits/sec                  receiver
+
+
+
 and for kernel4 for cubic:
 [ ID] Interval           Transfer     Bitrate
 [  5]   0.00-60.16  sec   137 MBytes  19.1 Mbits/sec                  receiver
@@ -1161,6 +1181,28 @@ PK3C:
 [SUM]   0.00-30.21  sec  27.5 MBytes  7.64 Mbits/sec  13964             sender
 [SUM]   0.00-30.21  sec  17.0 MBytes  4.73 Mbits/sec                  receiver
 
+
+, and 3 connections from USA to Israel for kernel4 with cubic (if using cell-phone internet with higher RTT):
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.26  sec  16.2 MBytes  2.26 Mbits/sec   42             sender
+[  5]   0.00-60.26  sec  10.3 MBytes  1.43 Mbits/sec                  receiver
+[  7]   0.00-60.26  sec  17.5 MBytes  2.44 Mbits/sec   52             sender
+[  7]   0.00-60.26  sec  11.7 MBytes  1.62 Mbits/sec                  receiver
+[  9]   0.00-60.26  sec  17.5 MBytes  2.44 Mbits/sec   50             sender
+[  9]   0.00-60.26  sec  11.9 MBytes  1.65 Mbits/sec                  receiver
+[SUM]   0.00-60.26  sec  51.2 MBytes  7.13 Mbits/sec  144             sender
+[SUM]   0.00-60.26  sec  33.8 MBytes  4.70 Mbits/sec                  receiver
+
+, and similar 3 connections from USA to Israel for kernel4 with PK3C (if using cell-phone internet with higher RTT):
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  18.8 MBytes  2.62 Mbits/sec  401             sender
+[  5]   0.00-60.00  sec  12.5 MBytes  1.75 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  16.2 MBytes  2.27 Mbits/sec  235             sender
+[  7]   0.00-60.00  sec  10.6 MBytes  1.48 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  17.5 MBytes  2.45 Mbits/sec  239             sender
+[  9]   0.00-60.00  sec  11.8 MBytes  1.66 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  52.5 MBytes  7.34 Mbits/sec  875             sender
+[SUM]   0.00-60.00  sec  34.9 MBytes  4.88 Mbits/sec                  receiver
 
 
 Conclusion.
