@@ -1,8 +1,20 @@
 This is TCP/IP congestion control for video streaming/data servers.
+First, read "understanding": https://granulate.io/understanding-congestion-control/
+
 How to improve for free quality of network connections?
 How to make upload data faster (up to 5 times faster!) for your workstation?
 How to make download data faster for your servers?
 If you don't know what all this about, then read first about Cubic congestion control ( https://en.wikipedia.org/wiki/CUBIC_TCP ) and then about similar Google project BBR that is more in common with this project (than if comparing with Cubic).
+
+These graphs shows upload test by speed.io (both works and working differently):
+
+, the PK3C makes decision about best upload speed faster (without trying too high):
+
+![Alt text](/imgs/PK3CUpload.gif?raw=true "PK3C Upload graph")
+
+, and for one connection the Cubic is a little bit faster:
+
+![Alt text](/imgs/CubicUpload.gif?raw=true "Cubic Upload graph")
 
 !!! The most funny thing that this PK3C is sending data more aggressively than Cubic, so if few Cubic connections and few PK3C connections
 share the same link, then PK3C wins (about 5 times wins!)!
