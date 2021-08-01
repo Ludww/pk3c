@@ -12,7 +12,7 @@ Then, this project will help to:
 * **make upload data faster for your workstation**
 * **make download data faster from your servers**
 
-Also read first about Wiki page Cubic congestion control ( https://en.wikipedia.org/wiki/CUBIC_TCP ) and then about similar Google project BBR that has more in common with this PK3C project (than if comparing PK3C with default Cubic).
+Also read first Wiki page Cubic congestion control ( https://en.wikipedia.org/wiki/CUBIC_TCP ) and then about similar Google project BBR that has more in common with this PK3C project (than if comparing PK3C with default Cubic).
 
 
 ## Two funny pictures for getting some idea
