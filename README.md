@@ -138,16 +138,12 @@ so you may use it for Red Hat 7.x or other older Linux systems!).
 * 4. The PK3C is free (dual BSD/GPL license and based on https://github.com/PCCproject/PCC-Kernel by Nogah Frankel ). And the latest PCC became comercial (non available and not based on original PCC-Kernel anymore). And the BBR (that is other analogue of PK3C) is available with "Apache License 2.0", but only for latest 4.x or 5.x kernels. So the advantage of PK3C that is works good for Kernels 3.x too and enough universal. And both BBR is "less powerfull" comparing with PK3C, and PCC-Kernel is "less or similar powerfull" comparing with PK3C (at least if comparing with one from https://github.com/PCCproject/PCC-Kernel or from https://github.com/KaiwenZha/PCC-Vivace).
 * 5. For more info about PK3C advantages comparing with PCC , see top comments of the [/tcp_pk3c_main.c](tcp_pk3c_main.c) (and the main advantage is that slow-start happens much faster for PK3C, than for PCC, and two years of science were for making this solution,
 so it means that PK3C guesses optimal rate of any new connection faster and better, than other). However, nobody knows what is inside latest versions of "commercial" PCC if any
-
 -- the overall reason why PK3C better, than original version of PCC-Kernel (or other original Vivace versions), is that it PCC-Kernel based on theory only and more like small scientific work, when PK3C based both on theory and practice and a lot of different testing (for example, when it was obvious that sometimes utility function gives incorrect results for some specific connections, then some additional logic with max/min estimates and with do fast slow-start were added to PK3C and tested). In original PCC-Kernel there are no such improvements, because authors of original PCC tried to keep it based on utility function only (without such experimental guesses how to make it best, but instead original PCC based on few ideal experiments in ideal room with ideal conditions).
-
 * 6. Of course, the congestion algorithm need to meet advantage of auto-stabilization: if many connections share bottleneck, no one connection suppose to use all of the bandwidth,
 but instead all connections together should split these bottleneck in alsmost similar parts. The PK3C meets of this expectation (at least tested that many simultanious connections
 with PK3C does this), and the original version of PCC (from github) didn't meet this expectation. The main reason that for making overall multi-connections system being effective
 all connections needs to change in time randomly (trying higher and lower values even the connection is stable) and PCC instead keeping as stable as possible, but PK3C does some small variations even for stable links. So PK3C has enough randomeness for being similar or better, than cubic (and PCC likely not).
-
 * 7. PK3C has two algorithms together: both Vivace being used and some additional "handbrakes" being used (like if Vivace make incorrect decision, then other simpler "handbrake" algorithm improves this decision), so second algorithm fixes input bugs of main algorirthm. However, tried to keep original ideas and algorithm Vivace (utility func) as is.
-* 
 * 8. Original PCC was to conservative (like designed for some ideal conditions), and the new PK3C is kind of opensource hippie.
 
 
