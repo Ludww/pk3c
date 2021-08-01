@@ -15,7 +15,7 @@ Then, this project will help to:
 Also read first about Wiki page Cubic congestion control ( https://en.wikipedia.org/wiki/CUBIC_TCP ) and then about similar Google project BBR that has more in common with this PK3C project (than if comparing PK3C with default Cubic).
 
 
-## Some funny pictures for getting some idea
+## Two funny pictures for getting some idea
 
 These graphs shows upload test by speed.io for one connection (and you can see that both default Cubic congestion algorithm and new PK3C does it job):
 
