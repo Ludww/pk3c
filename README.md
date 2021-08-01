@@ -31,7 +31,7 @@ These graphs shows upload test by speed.io for one connection (and you can see t
 ## Interesting note
 
 * **!Even for one connection PK3C could be a little bit slower, for many connections PK3C sending data more aggressively than Cubic, so if few Cubic connections and few PK3C connections share the same link, then PK3C wins (up to 5 times wins!)!**
-I think this is the answer the to question why Google uses BBR instead of Cubic (because they want their traffic to be downloadable faster than from other servers that are uses defaults that are non-BBR). The Google says that BRR about 20% faster, than Cubic.
+I think this is the answer to the question why Google uses BBR instead of Cubic (because they want their traffic to be downloadable faster than from other servers that are uses defaults that are non-BBR). The Google says that BRR about 20% faster, than Cubic.
 
 Both it means that this PK3C project could be usefull not only for servers, but both for your workstation (because both connections initiation should be faster and both upload data from your workstation would be faster a little bit faster at least for short-time connections where no need "try-guess-initial-time" for PK3C comparing to Cubic).
 
