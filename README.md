@@ -54,7 +54,7 @@ Found one other similar project that is based on original PCC-Kernel: https://gi
 This one is for TCP/IP, but there are other solutions of congestion problem for other protocols (ex. DCCP protocol that is suppose to be better, than TCP/IP or "UDP"; and with better congestion than any in TCP/IP). However, the DCCP is not yet common (not supported and not known), and TCP/IP is the today most used (apart from UDP that is being used everywhere too where UDP could be without congestion or could be congestion above raw UDP protocol), so the projects like this PK3C that are for TCP/IP are still actual today (so I recomend you to try using this PK3C instead of Cubic or to compare it with BBR from Google).
 
 
-## Installation
+## Installation for Kernel 4 (or Kernel 5)
 
 ``git clone https://github.com/Ludww/pk3c.git``
 
@@ -154,7 +154,7 @@ For local testing of multi-connections, there is special tool "mahimahi" (for em
 Also this module tested with 10Gb+ networks with multi (tousants) connections. Results of these tests not included yet here, but overall results were fine (better than for Cubic).
 
 
-## Installation.
+## Additional installation steps for Kernel 3.
 
 Note that for kernel 3 need to run this configuration (shell script commands) before usage of the PK3C (where $1 is eth interface name), and because for kernel 3 the rate congestion control algorithms were not supported yet, there are many shell commands for configuration of ``tc qdisc`` (and for kernel 4 or higher most of these command not required anymore):
 
