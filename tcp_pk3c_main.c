@@ -292,20 +292,23 @@ static void pk3c_setup_intervals_probing(struct pk3c_data *pk3c)
 static void start_interval(struct sock *sk, struct pk3c_data *pk3c)
 {	
 	u64 rate;
+	s64 max_thr;
 	struct tcp_sock *tp = tcp_sk(sk);
 	bool hb = false;
 	struct pk3c_interval *interval;
 
 	rate = pk3c->nums->rate;
 
-	if(pk3c->start_mode && pk3c->nums->thr_prev && pk3c->nums->thr_prev > rate / 10000 &&
-	   pk3c->nums->thr_prev < rate / 3 &&
-	   pk3c->nums->thr_prev * 5 >= MIN_RATE_LIMIT &&
-	   pk3c->nums->thr_prev <= MAX_RATE_LIMIT
+        max_thr = pk3c->nums->thr_prev;
+	if(pk3c->nums->thr > max_thr)
+		rate = max_thr;
+
+	if(pk3c->start_mode && max_thr && max_thr > rate / 10000 &&
+	   max_thr < rate / 3 &&
+	   max_thr*2 >= MIN_RATE_LIMIT &&
+	   max_thr <= MAX_RATE_LIMIT
 	  ) {
-		rate = pk3c->nums->thr_prev;
-		if(pk3c->nums->thr > pk3c->nums->thr_prev)
-			rate = pk3c->nums->thr;
+		rate = max_thr*3/2;
 
 		if(rate < MIN_RATE_LIMIT) {
 			rate = MIN_RATE_LIMIT;
@@ -1220,7 +1223,7 @@ static void pk3c_decide_fastmoving(struct sock *sk, struct pk3c_data *pk3c)
 
 	
 	if(decision != last_decision || interval->lost > 0 || calc_T_formula(new_rate, pk3c->lrtt, sk) >= THE_T_VALUE) {
-		if(decision != last_decision || calc_T_formula(new_rate, pk3c->lrtt, sk) >= THE_T_VALUE || interval->lost > 2 ) {
+		if(decision != last_decision || calc_T_formula(new_rate, pk3c->lrtt, sk) >= THE_T_VALUE || interval->lost > 6) {
 
 
 	cprintk(KERN_DEBUG "%i end moving_fast: pk3c_setup_intervals_probing because of: decision %i != last_decision %i || pk3c->nums->handbrake %i || interval->lost %i || thrpt x 3 %llu >= rate %llu, %lld\n", pk3c->nums->id, decision, last_decision, pk3c->nums->handbrake, interval->lost, pk3c->nums->thr_prev, pk3c->nums->rate, calc_T_formula(new_rate, pk3c->lrtt, sk));
@@ -1242,8 +1245,8 @@ static void pk3c_decide_fastmoving(struct sock *sk, struct pk3c_data *pk3c)
 				rate_decrease =	tp->mss_cache * (1000000/pk3c->lrtt);
 			}
 
-			if(pk3c->nums->rate-rate_decrease/8 > ((pk3c->nums->maxrate+pk3c->nums->minrate)/2 - (pk3c->nums->maxrate+pk3c->nums->minrate)/4) )	
-				pk3c->nums->rate -= rate_decrease/8;
+//			if(pk3c->nums->rate-rate_decrease/8 > ((pk3c->nums->maxrate+pk3c->nums->minrate)/2 - (pk3c->nums->maxrate+pk3c->nums->minrate)/4) )	
+//				pk3c->nums->rate -= rate_decrease/8;
 		} else {
 			pk3c->nums->rate = new_rate;
 		}
@@ -1264,6 +1267,7 @@ static void pk3c_decide_slow_start(struct sock *sk, struct pk3c_data *pk3c)
 {
 	struct pk3c_interval *interval = &pk3c->intervals[0];
 	s64 utility, prev_utility;
+	s64 max_thr;
 	struct tcp_sock *tp = tcp_sk(sk);
 
 
@@ -1290,26 +1294,28 @@ static void pk3c_decide_slow_start(struct sock *sk, struct pk3c_data *pk3c)
 	if (!pk3c->nums->handbrake && utility > prev_utility && pk3c->nums->rate < MAX_RATE_LIMIT) {
 		pk3c->nums->last_rate = pk3c->nums->rate;
 
-		pk3c->nums->rate += pk3c->nums->rate / 2;
+		pk3c->nums->rate += pk3c->nums->rate / 2; // default was rate = rate + rate/3
 		interval->utility = utility;
 		interval->rate = pk3c->nums->rate;
 
-	        if(pk3c->nums->thr_prev && pk3c->nums->thr_prev > pk3c->nums->rate / 10000 &&
-	           pk3c->nums->thr_prev * 5 >= MIN_RATE_LIMIT &&
-	           pk3c->nums->thr_prev <= MAX_RATE_LIMIT &&
-                   pk3c->nums->thr_prev * 3 / 2 < interval->rate
+                max_thr = pk3c->nums->thr_prev;
+		if(pk3c->nums->thr > max_thr)
+		       max_thr = pk3c->nums->thr;	
+	        if(max_thr && max_thr > pk3c->nums->rate / 10000 &&
+	           max_thr * 5 >= MIN_RATE_LIMIT &&
+	           max_thr <= MAX_RATE_LIMIT &&
+                   max_thr * 2 < interval->rate
 	          ) {
-		        interval->rate = pk3c->nums->thr_prev * 3 / 2;
-		        if(pk3c->nums->thr > pk3c->nums->thr_prev)
-			    interval->rate = pk3c->nums->thr * 3 / 2;
+		        interval->rate = max_thr * 2;
 
 		        if(interval->rate < MIN_RATE_LIMIT) {
 			    interval->rate = MIN_RATE_LIMIT;
 		        }
 	            }	
-		pk3c->nums->rate = interval->rate;
+		pk3c->nums->rate = interval->rate; // Overall, make slow-start less aggressive (like througput x 1.5 each step instead of rate=rate + rate/2 , see above),
+		                                   // because other case overflow happens for low-rate connections
 
-		cprintk(KERN_INFO "%d pk3c_decide_slow_start set interval->rate = %i thr = %lu\n", pk3c->nums->id, interval->rate, pk3c->nums->thr);
+		cprintk(KERN_INFO "%d pk3c_decide_slow_start set interval->rate = %i thr = %lu    util %li > %li\n", pk3c->nums->id, interval->rate, pk3c->nums->thr, utility, prev_utility);
 		pk3c->send_index = 0;
 		interval->send_start = 0;
 		interval->send_end = 0;

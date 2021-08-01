@@ -1,0 +1,1340 @@
+10 connections 60 secs, Cubic, kernel4, channel to Google server where 110 MBit/s limitation of wire connection, ping about time=170 ms:
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  60.4 MBytes  8.44 Mbits/sec  681             sender
+[  5]   0.00-60.19  sec  58.2 MBytes  8.11 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  62.2 MBytes  8.70 Mbits/sec  278             sender
+[  7]   0.00-60.19  sec  59.8 MBytes  8.34 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  74.0 MBytes  10.3 Mbits/sec  638             sender
+[  9]   0.00-60.19  sec  72.0 MBytes  10.0 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  59.9 MBytes  8.37 Mbits/sec  859             sender
+[ 11]   0.00-60.19  sec  57.2 MBytes  7.98 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec  66.0 MBytes  9.22 Mbits/sec  685             sender
+[ 13]   0.00-60.19  sec  64.7 MBytes  9.02 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  62.5 MBytes  8.73 Mbits/sec  763             sender
+[ 15]   0.00-60.19  sec  61.0 MBytes  8.50 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec  68.0 MBytes  9.51 Mbits/sec  1483             sender
+[ 17]   0.00-60.19  sec  65.5 MBytes  9.13 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec  74.7 MBytes  10.4 Mbits/sec  1823             sender
+[ 19]   0.00-60.19  sec  72.0 MBytes  10.0 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec  67.7 MBytes  9.47 Mbits/sec  515             sender
+[ 21]   0.00-60.19  sec  65.0 MBytes  9.06 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec  64.1 MBytes  8.96 Mbits/sec  885             sender
+[ 23]   0.00-60.19  sec  62.4 MBytes  8.69 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec   659 MBytes  92.2 Mbits/sec  8610             sender
+[SUM]   0.00-60.19  sec   638 MBytes  88.9 Mbits/sec                  receiver
+
+
+10 connections 60 secs, PK3C, kernel4, channel to Google server where 110 MBit/s limitation of wire connection, ping about time=170 ms:
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  78.6 MBytes  11.0 Mbits/sec  2951             sender
+[  5]   0.00-60.17  sec  75.1 MBytes  10.5 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  69.7 MBytes  9.75 Mbits/sec  2936             sender
+[  7]   0.00-60.17  sec  67.4 MBytes  9.39 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  91.3 MBytes  12.8 Mbits/sec  3533             sender
+[  9]   0.00-60.17  sec  88.3 MBytes  12.3 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  31.4 MBytes  4.39 Mbits/sec  606             sender
+[ 11]   0.00-60.17  sec  30.6 MBytes  4.27 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec  91.9 MBytes  12.9 Mbits/sec  4067             sender
+[ 13]   0.00-60.17  sec  88.8 MBytes  12.4 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec   116 MBytes  16.2 Mbits/sec  3149             sender
+[ 15]   0.00-60.17  sec   113 MBytes  15.7 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec  67.9 MBytes  9.50 Mbits/sec  3329             sender
+[ 17]   0.00-60.17  sec  65.6 MBytes  9.14 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec  35.2 MBytes  4.92 Mbits/sec  733             sender
+[ 19]   0.00-60.17  sec  34.1 MBytes  4.75 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec   108 MBytes  15.0 Mbits/sec  3940             sender
+[ 21]   0.00-60.17  sec   104 MBytes  14.5 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec  80.2 MBytes  11.2 Mbits/sec  2682             sender
+[ 23]   0.00-60.17  sec  77.3 MBytes  10.8 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec   770 MBytes   108 Mbits/sec  27926             sender
+[SUM]   0.00-60.17  sec   744 MBytes   104 Mbits/sec                  receiver
+
+
+!!! and now cubic plus PK3C testing together (first run Cubic, then PK3C, and PK3C wins, so if someone starts using PK3C in the world,
+then some months later everyone will have to move to PK3C, because it is more aggressive and forces Cubic down):
+10 connections with Cubic for 120 secs, kernel4, channel to Google server with ~110 MBits/s wire (and similar 10 connections from PK3C next):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-120.00 sec  34.9 MBytes  2.44 Mbits/sec  894             sender
+[  5]   0.00-120.18 sec  32.4 MBytes  2.26 Mbits/sec                  receiver
+[  7]   0.00-120.00 sec  30.4 MBytes  2.13 Mbits/sec  1035             sender
+[  7]   0.00-120.18 sec  27.8 MBytes  1.94 Mbits/sec                  receiver
+[  9]   0.00-120.00 sec  44.7 MBytes  3.12 Mbits/sec  1276             sender
+[  9]   0.00-120.18 sec  41.6 MBytes  2.90 Mbits/sec                  receiver
+[ 11]   0.00-120.00 sec  36.8 MBytes  2.57 Mbits/sec  1656             sender
+[ 11]   0.00-120.18 sec  34.3 MBytes  2.40 Mbits/sec                  receiver
+[ 13]   0.00-120.00 sec  37.7 MBytes  2.63 Mbits/sec  897             sender
+[ 13]   0.00-120.18 sec  35.4 MBytes  2.47 Mbits/sec                  receiver
+[ 15]   0.00-120.00 sec  31.2 MBytes  2.18 Mbits/sec  827             sender
+[ 15]   0.00-120.18 sec  29.2 MBytes  2.04 Mbits/sec                  receiver
+[ 17]   0.00-120.00 sec  36.7 MBytes  2.56 Mbits/sec  885             sender
+[ 17]   0.00-120.18 sec  34.6 MBytes  2.41 Mbits/sec                  receiver
+[ 19]   0.00-120.00 sec  39.9 MBytes  2.79 Mbits/sec  853             sender
+[ 19]   0.00-120.18 sec  36.8 MBytes  2.57 Mbits/sec                  receiver
+[ 21]   0.00-120.00 sec  30.9 MBytes  2.16 Mbits/sec  814             sender
+[ 21]   0.00-120.18 sec  28.6 MBytes  2.00 Mbits/sec                  receiver
+[ 23]   0.00-120.00 sec  44.8 MBytes  3.14 Mbits/sec  959             sender
+[ 23]   0.00-120.18 sec  42.4 MBytes  2.96 Mbits/sec                  receiver
+[SUM]   0.00-120.00 sec   368 MBytes  25.7 Mbits/sec  10096             sender
+[SUM]   0.00-120.18 sec   343 MBytes  24.0 Mbits/sec                  receiver
+
+!!! and similar results for PK3C (that worked the same way on different port with "iperf3 -c servername -p 80 -P 10 -t 120"):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-120.00 sec   236 MBytes  16.5 Mbits/sec  3374             sender
+[  5]   0.00-120.16 sec   234 MBytes  16.3 Mbits/sec                  receiver
+[  7]   0.00-120.00 sec   130 MBytes  9.12 Mbits/sec  1605             sender
+[  7]   0.00-120.16 sec   128 MBytes  8.91 Mbits/sec                  receiver
+[  9]   0.00-120.00 sec   104 MBytes  7.29 Mbits/sec  1580             sender
+[  9]   0.00-120.16 sec   102 MBytes  7.09 Mbits/sec                  receiver
+[ 11]   0.00-120.00 sec   205 MBytes  14.3 Mbits/sec  2779             sender
+[ 11]   0.00-120.16 sec   203 MBytes  14.2 Mbits/sec                  receiver
+[ 13]   0.00-120.00 sec   160 MBytes  11.2 Mbits/sec  2438             sender
+[ 13]   0.00-120.16 sec   158 MBytes  11.0 Mbits/sec                  receiver
+[ 15]   0.00-120.00 sec   208 MBytes  14.5 Mbits/sec  2872             sender
+[ 15]   0.00-120.16 sec   206 MBytes  14.4 Mbits/sec                  receiver
+[ 17]   0.00-120.00 sec  58.0 MBytes  4.05 Mbits/sec  860             sender
+[ 17]   0.00-120.16 sec  56.0 MBytes  3.91 Mbits/sec                  receiver
+[ 19]   0.00-120.00 sec  83.8 MBytes  5.86 Mbits/sec  1297             sender
+[ 19]   0.00-120.16 sec  82.5 MBytes  5.76 Mbits/sec                  receiver
+[ 21]   0.00-120.00 sec   110 MBytes  7.72 Mbits/sec  1901             sender
+[ 21]   0.00-120.16 sec   107 MBytes  7.50 Mbits/sec                  receiver
+[ 23]   0.00-120.00 sec   105 MBytes  7.36 Mbits/sec  1505             sender
+[ 23]   0.00-120.16 sec   104 MBytes  7.24 Mbits/sec                  receiver
+[SUM]   0.00-120.00 sec  1.37 GBytes  98.0 Mbits/sec  20211             sender
+[SUM]   0.00-120.16 sec  1.35 GBytes  96.2 Mbits/sec                  receiver
+
+
+******************************************************************************
+
+5 connections 60 secs, Cubic, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=96.3 ms (wire connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.20  sec  7.37 MBytes  1.03 Mbits/sec   53             sender
+[  5]   0.00-60.20  sec  7.22 MBytes  1.01 Mbits/sec                  receiver
+[  7]   0.00-60.20  sec  8.68 MBytes  1.21 Mbits/sec   59             sender
+[  7]   0.00-60.20  sec  8.40 MBytes  1.17 Mbits/sec                  receiver
+[  9]   0.00-60.20  sec  6.67 MBytes   930 Kbits/sec   71             sender
+[  9]   0.00-60.20  sec  6.49 MBytes   904 Kbits/sec                  receiver
+[ 11]   0.00-60.20  sec  6.02 MBytes   839 Kbits/sec   77             sender
+[ 11]   0.00-60.20  sec  5.83 MBytes   813 Kbits/sec                  receiver
+[ 13]   0.00-60.20  sec  8.81 MBytes  1.23 Mbits/sec   47             sender
+[ 13]   0.00-60.20  sec  8.64 MBytes  1.20 Mbits/sec                  receiver
+[SUM]   0.00-60.20  sec  37.5 MBytes  5.23 Mbits/sec  307             sender
+[SUM]   0.00-60.20  sec  36.6 MBytes  5.10 Mbits/sec                  receiver
+
+5 connections 60 secs, PK3C, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=96.3 ms (wire connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.21  sec  8.97 MBytes  1.25 Mbits/sec  685             sender
+[  5]   0.00-60.21  sec  8.35 MBytes  1.16 Mbits/sec                  receiver
+[  7]   0.00-60.21  sec  7.61 MBytes  1.06 Mbits/sec  628             sender
+[  7]   0.00-60.21  sec  6.76 MBytes   942 Kbits/sec                  receiver
+[  9]   0.00-60.21  sec  7.14 MBytes   995 Kbits/sec  528             sender
+[  9]   0.00-60.21  sec  6.38 MBytes   889 Kbits/sec                  receiver
+[ 11]   0.00-60.21  sec  8.43 MBytes  1.17 Mbits/sec  605             sender
+[ 11]   0.00-60.21  sec  7.80 MBytes  1.09 Mbits/sec                  receiver
+[ 13]   0.00-60.21  sec  7.97 MBytes  1.11 Mbits/sec  594             sender
+[ 13]   0.00-60.21  sec  7.23 MBytes  1.01 Mbits/sec                  receiver
+[SUM]   0.00-60.21  sec  40.1 MBytes  5.59 Mbits/sec  3040             sender
+[SUM]   0.00-60.21  sec  36.5 MBytes  5.09 Mbits/sec                  receiver
+
+
+******************************************************************************
+
+1 connections 60 secs, Cubic, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=96.3 ms (wire connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-30.26  sec  16.1 MBytes  4.46 Mbits/sec   38             sender
+[  5]   0.00-30.26  sec  15.9 MBytes  4.40 Mbits/sec                  receiver
+
+
+1 connections 60 secs, PK3C, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=96.3 ms (wire connection):
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-30.22  sec  18.1 MBytes  5.02 Mbits/sec  860             sender
+[  5]   0.00-30.22  sec  15.4 MBytes  4.27 Mbits/sec                  receiver
+
+
+******************************************************************************
+
+3 connections 60 secs, Cubic, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=96.3 ms (wire connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.22  sec  9.17 MBytes  1.28 Mbits/sec   68             sender
+[  5]   0.00-60.22  sec  8.87 MBytes  1.23 Mbits/sec                  receiver
+[  7]   0.00-60.22  sec  13.8 MBytes  1.92 Mbits/sec   41             sender
+[  7]   0.00-60.22  sec  13.5 MBytes  1.88 Mbits/sec                  receiver
+[  9]   0.00-60.22  sec  14.4 MBytes  2.01 Mbits/sec   32             sender
+[  9]   0.00-60.22  sec  14.2 MBytes  1.97 Mbits/sec                  receiver
+[SUM]   0.00-60.22  sec  37.4 MBytes  5.20 Mbits/sec  141             sender
+[SUM]   0.00-60.22  sec  36.6 MBytes  5.09 Mbits/sec                  receiver
+
+3 connections 60 secs, PK3C, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=96.3 ms (wire connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.14  sec  13.9 MBytes  1.94 Mbits/sec  548             sender
+[  5]   0.00-60.14  sec  12.9 MBytes  1.81 Mbits/sec                  receiver
+[  7]   0.00-60.14  sec  12.4 MBytes  1.73 Mbits/sec  697             sender
+[  7]   0.00-60.14  sec  11.5 MBytes  1.60 Mbits/sec                  receiver
+[  9]   0.00-60.14  sec  12.4 MBytes  1.74 Mbits/sec  686             sender
+[  9]   0.00-60.14  sec  11.7 MBytes  1.64 Mbits/sec                  receiver
+[SUM]   0.00-60.14  sec  38.8 MBytes  5.41 Mbits/sec  1931             sender
+[SUM]   0.00-60.14  sec  36.2 MBytes  5.04 Mbits/sec                  receiver
+
+
+******************************************************************************
+
+5 connections 60 secs, Cubic, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=210 ms (via cell-phone internet connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.80  sec  7.84 MBytes  1.08 Mbits/sec   84             sender
+[  5]   0.00-60.80  sec  7.72 MBytes  1.06 Mbits/sec                  receiver
+[  7]   0.00-60.80  sec  7.52 MBytes  1.04 Mbits/sec  100             sender
+[  7]   0.00-60.80  sec  7.39 MBytes  1.02 Mbits/sec                  receiver
+[  9]   0.00-60.80  sec  7.39 MBytes  1.02 Mbits/sec  139             sender
+[  9]   0.00-60.80  sec  7.16 MBytes   987 Kbits/sec                  receiver
+[ 11]   0.00-60.80  sec  6.49 MBytes   895 Kbits/sec   96             sender
+[ 11]   0.00-60.80  sec  6.37 MBytes   879 Kbits/sec                  receiver
+[ 13]   0.00-60.80  sec  7.53 MBytes  1.04 Mbits/sec  112             sender
+[ 13]   0.00-60.80  sec  7.31 MBytes  1.01 Mbits/sec                  receiver
+[SUM]   0.00-60.80  sec  36.8 MBytes  5.07 Mbits/sec  531             sender
+[SUM]   0.00-60.80  sec  36.0 MBytes  4.96 Mbits/sec                  receiver
+
+
+5 connections 60 secs, PK3C, kernel4, channel USA to Isr ~5 MBit/s (with ~0.1% loses), ping about time=210 ms (via cell-phone internet connection):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.28  sec  9.23 MBytes  1.29 Mbits/sec  553             sender
+[  5]   0.00-60.28  sec  7.85 MBytes  1.09 Mbits/sec                  receiver
+[  7]   0.00-60.28  sec  9.27 MBytes  1.29 Mbits/sec  588             sender
+[  7]   0.00-60.28  sec  8.22 MBytes  1.14 Mbits/sec                  receiver
+[  9]   0.00-60.28  sec  8.88 MBytes  1.24 Mbits/sec  477             sender
+[  9]   0.00-60.28  sec  7.51 MBytes  1.04 Mbits/sec                  receiver
+[ 11]   0.00-60.28  sec  7.38 MBytes  1.03 Mbits/sec  414             sender
+[ 11]   0.00-60.28  sec  6.34 MBytes   882 Kbits/sec                  receiver
+[ 13]   0.00-60.28  sec  7.84 MBytes  1.09 Mbits/sec  537             sender
+[ 13]   0.00-60.28  sec  6.49 MBytes   903 Kbits/sec                  receiver
+[SUM]   0.00-60.28  sec  42.6 MBytes  5.93 Mbits/sec  2569             sender
+[SUM]   0.00-60.28  sec  36.4 MBytes  5.07 Mbits/sec                  receiver
+
+
+***************************************************************************************************
+
+
+
+10 connections 60 secs, Cubic, kernel4, channel to Google server where ~9.5 MBit/s limitation of cell-phone connection, ping about time=260 ms:
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  7.57 MBytes  1.06 Mbits/sec  117             sender
+[  5]   0.00-60.51  sec  7.06 MBytes   979 Kbits/sec                  receiver
+[  7]   0.00-60.00  sec  5.71 MBytes   799 Kbits/sec   86             sender
+[  7]   0.00-60.51  sec  5.47 MBytes   759 Kbits/sec                  receiver
+[  9]   0.00-60.00  sec  8.24 MBytes  1.15 Mbits/sec  122             sender
+[  9]   0.00-60.51  sec  7.96 MBytes  1.10 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  5.81 MBytes   813 Kbits/sec   90             sender
+[ 11]   0.00-60.51  sec  5.68 MBytes   787 Kbits/sec                  receiver
+[ 13]   0.00-60.00  sec  7.66 MBytes  1.07 Mbits/sec  125             sender
+[ 13]   0.00-60.51  sec  7.32 MBytes  1.01 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  6.36 MBytes   889 Kbits/sec  113             sender
+[ 15]   0.00-60.51  sec  6.16 MBytes   854 Kbits/sec                  receiver
+[ 17]   0.00-60.00  sec  6.60 MBytes   923 Kbits/sec  106             sender
+[ 17]   0.00-60.51  sec  6.19 MBytes   859 Kbits/sec                  receiver
+[ 19]   0.00-60.00  sec  6.89 MBytes   963 Kbits/sec   79             sender
+[ 19]   0.00-60.51  sec  6.64 MBytes   921 Kbits/sec                  receiver
+[ 21]   0.00-60.00  sec  6.31 MBytes   883 Kbits/sec  128             sender
+[ 21]   0.00-60.51  sec  6.03 MBytes   836 Kbits/sec                  receiver
+[ 23]   0.00-60.00  sec  8.18 MBytes  1.14 Mbits/sec  100             sender
+[ 23]   0.00-60.51  sec  7.76 MBytes  1.08 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  69.3 MBytes  9.69 Mbits/sec  1066             sender
+[SUM]   0.00-60.51  sec  66.3 MBytes  9.19 Mbits/sec                  receiver
+
+
+10 connections 60 secs, PK3C, kernel4, channel to Google server where ~9.5 MBit/s limitation of cell-phone connection, ping about time=260 ms:
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  7.26 MBytes  1.01 Mbits/sec  425             sender
+[  5]   0.00-60.63  sec  6.47 MBytes   895 Kbits/sec                  receiver
+[  7]   0.00-60.00  sec  7.49 MBytes  1.05 Mbits/sec  347             sender
+[  7]   0.00-60.63  sec  6.78 MBytes   938 Kbits/sec                  receiver
+[  9]   0.00-60.00  sec  7.06 MBytes   988 Kbits/sec  433             sender
+[  9]   0.00-60.63  sec  6.42 MBytes   888 Kbits/sec                  receiver
+[ 11]   0.00-60.00  sec  7.82 MBytes  1.09 Mbits/sec  415             sender
+[ 11]   0.00-60.63  sec  7.10 MBytes   983 Kbits/sec                  receiver
+[ 13]   0.00-60.00  sec  9.74 MBytes  1.36 Mbits/sec  479             sender
+[ 13]   0.00-60.63  sec  9.01 MBytes  1.25 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  7.49 MBytes  1.05 Mbits/sec  384             sender
+[ 15]   0.00-60.63  sec  6.77 MBytes   937 Kbits/sec                  receiver
+[ 17]   0.00-60.00  sec  7.19 MBytes  1.01 Mbits/sec  369             sender
+[ 17]   0.00-60.63  sec  6.29 MBytes   871 Kbits/sec                  receiver
+[ 19]   0.00-60.00  sec  7.19 MBytes  1.00 Mbits/sec  290             sender
+[ 19]   0.00-60.63  sec  5.89 MBytes   815 Kbits/sec                  receiver
+[ 21]   0.00-60.00  sec  7.92 MBytes  1.11 Mbits/sec  295             sender
+[ 21]   0.00-60.63  sec  7.22 MBytes   998 Kbits/sec                  receiver
+[ 23]   0.00-60.00  sec  9.23 MBytes  1.29 Mbits/sec  306             sender
+[ 23]   0.00-60.63  sec  8.03 MBytes  1.11 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  78.4 MBytes  11.0 Mbits/sec  3743             sender
+[SUM]   0.00-60.63  sec  70.0 MBytes  9.68 Mbits/sec                  receiver
+
+
+***************************************************************************************************
+
+
+The results above were with latest version.
+Next results outdated (need to rerun tests below with latest version):
+
+For PK3C I see the results:
+...
+[ 64]   0.00-10.16  sec  2.57 MBytes  2.12 Mbits/sec                  receiver
+[ 66]   0.00-10.16  sec  2.65 MBytes  2.19 Mbits/sec                  receiver
+[ 68]   0.00-10.16  sec  2.54 MBytes  2.10 Mbits/sec                  receiver
+[ 70]   0.00-10.16  sec  2.66 MBytes  2.20 Mbits/sec                  receiver
+[ 72]   0.00-10.16  sec  2.77 MBytes  2.29 Mbits/sec                  receiver
+[ 74]   0.00-10.16  sec  2.63 MBytes  2.17 Mbits/sec                  receiver
+[ 76]   0.00-10.16  sec  2.64 MBytes  2.18 Mbits/sec                  receiver
+[ 78]   0.00-10.16  sec  2.54 MBytes  2.10 Mbits/sec                  receiver
+[ 80]   0.00-10.16  sec  2.44 MBytes  2.01 Mbits/sec                  receiver
+[ 82]   0.00-10.16  sec  2.80 MBytes  2.31 Mbits/sec                  receiver
+[ 84]   0.00-10.16  sec  2.98 MBytes  2.46 Mbits/sec                  receiver
+[ 86]   0.00-10.16  sec  2.65 MBytes  2.19 Mbits/sec                  receiver
+[ 88]   0.00-10.16  sec  2.64 MBytes  2.18 Mbits/sec                  receiver
+[ 90]   0.00-10.16  sec  2.73 MBytes  2.26 Mbits/sec                  receiver
+[ 92]   0.00-10.16  sec  2.76 MBytes  2.28 Mbits/sec                  receiver
+[ 94]   0.00-10.16  sec  2.53 MBytes  2.09 Mbits/sec                  receiver
+[ 96]   0.00-10.16  sec  2.56 MBytes  2.12 Mbits/sec                  receiver
+[ 98]   0.00-10.16  sec  2.63 MBytes  2.17 Mbits/sec                  receiver
+[100]   0.00-10.16  sec  2.70 MBytes  2.23 Mbits/sec                  receiver
+[102]   0.00-10.16  sec  2.51 MBytes  2.07 Mbits/sec                  receiver
+[104]   0.00-10.16  sec  2.49 MBytes  2.06 Mbits/sec                  receiver
+[SUM]   0.00-10.16  sec   129 MBytes   106 Mbits/sec                  receiver
+
+
+, and for cubic I see the results:
+[ 72]   0.00-10.16  sec  2.18 MBytes  1.80 Mbits/sec                  receiver
+[ 74]   0.00-10.16  sec  2.81 MBytes  2.32 Mbits/sec                  receiver
+[ 76]   0.00-10.16  sec  3.20 MBytes  2.64 Mbits/sec                  receiver
+[ 78]   0.00-10.16  sec  2.18 MBytes  1.80 Mbits/sec                  receiver
+[ 80]   0.00-10.16  sec  2.95 MBytes  2.43 Mbits/sec                  receiver
+[ 82]   0.00-10.16  sec  2.45 MBytes  2.02 Mbits/sec                  receiver
+[ 84]   0.00-10.16  sec  2.23 MBytes  1.84 Mbits/sec                  receiver
+[ 86]   0.00-10.16  sec  2.47 MBytes  2.03 Mbits/sec                  receiver
+[ 88]   0.00-10.16  sec  2.96 MBytes  2.45 Mbits/sec                  receiver
+[ 90]   0.00-10.16  sec  3.54 MBytes  2.92 Mbits/sec                  receiver
+[ 92]   0.00-10.16  sec  2.44 MBytes  2.01 Mbits/sec                  receiver
+[ 94]   0.00-10.16  sec  3.17 MBytes  2.61 Mbits/sec                  receiver
+[ 96]   0.00-10.16  sec  1.49 MBytes  1.23 Mbits/sec                  receiver
+[ 98]   0.00-10.16  sec  2.57 MBytes  2.12 Mbits/sec                  receiver
+[100]   0.00-10.16  sec  2.54 MBytes  2.10 Mbits/sec                  receiver
+[102]   0.00-10.16  sec   870 KBytes   702 Kbits/sec                  receiver
+[104]   0.00-10.16  sec  2.10 MBytes  1.73 Mbits/sec                  receiver
+[SUM]   0.00-10.16  sec   124 MBytes   103 Mbits/sec                  receiver,
+
+-- so the results are similar and PK3C balancing of connections better than cubic.
+
+
+However, if you try "-t 60" param for client of iperf3, for Cubic it would give you
+[ 84]   0.00-30.16  sec  7.70 MBytes  2.14 Mbits/sec                  receiver
+[ 86]   0.00-30.16  sec  7.39 MBytes  2.06 Mbits/sec                  receiver
+[ 88]   0.00-30.16  sec  8.29 MBytes  2.31 Mbits/sec                  receiver
+[ 90]   0.00-30.16  sec  7.00 MBytes  1.95 Mbits/sec                  receiver
+[ 92]   0.00-30.16  sec  6.41 MBytes  1.78 Mbits/sec                  receiver
+[ 94]   0.00-30.16  sec  6.31 MBytes  1.75 Mbits/sec                  receiver
+[ 96]   0.00-30.16  sec  9.07 MBytes  2.52 Mbits/sec                  receiver
+[ 98]   0.00-30.16  sec  8.28 MBytes  2.30 Mbits/sec                  receiver
+[100]   0.00-30.16  sec  6.41 MBytes  1.78 Mbits/sec                  receiver
+[102]   0.00-30.16  sec  7.04 MBytes  1.96 Mbits/sec                  receiver
+[104]   0.00-30.16  sec  6.09 MBytes  1.69 Mbits/sec                  receiver
+[SUM]   0.00-30.16  sec   383 MBytes   106 Mbits/sec                  receiver
+
+
+and for PK3C:
+[ 70]   0.00-30.16  sec  9.33 MBytes  2.60 Mbits/sec                  receiver
+[ 72]   0.00-30.16  sec  5.58 MBytes  1.55 Mbits/sec                  receiver
+[ 74]   0.00-30.16  sec  7.01 MBytes  1.95 Mbits/sec                  receiver
+[ 76]   0.00-30.16  sec  5.84 MBytes  1.62 Mbits/sec                  receiver
+[ 78]   0.00-30.16  sec  8.58 MBytes  2.39 Mbits/sec                  receiver
+[ 80]   0.00-30.16  sec  8.69 MBytes  2.42 Mbits/sec                  receiver
+[ 82]   0.00-30.16  sec  4.46 MBytes  1.24 Mbits/sec                  receiver
+[ 84]   0.00-30.16  sec  9.25 MBytes  2.57 Mbits/sec                  receiver
+[ 86]   0.00-30.16  sec  6.73 MBytes  1.87 Mbits/sec                  receiver
+[ 88]   0.00-30.16  sec  8.68 MBytes  2.41 Mbits/sec                  receiver
+[ 90]   0.00-30.16  sec  4.88 MBytes  1.36 Mbits/sec                  receiver
+[ 92]   0.00-30.16  sec  9.30 MBytes  2.59 Mbits/sec                  receiver
+[ 94]   0.00-30.16  sec  6.52 MBytes  1.81 Mbits/sec                  receiver
+[ 96]   0.00-30.16  sec  6.86 MBytes  1.91 Mbits/sec                  receiver
+[ 98]   0.00-30.16  sec  7.38 MBytes  2.05 Mbits/sec                  receiver
+[100]   0.00-30.16  sec  6.21 MBytes  1.73 Mbits/sec                  receiver
+[102]   0.00-30.16  sec  4.23 MBytes  1.18 Mbits/sec                  receiver
+[104]   0.00-30.16  sec  4.40 MBytes  1.22 Mbits/sec                  receiver
+[SUM]   0.00-30.16  sec   384 MBytes   107 Mbits/sec                  receiver
+-- so overall conclusion that PK3C is the same or better for this 50 connections with 107 MBits/sec case.
+
+
+It is expected that the PK3C highly wins against cubic for the high-loss-rate connections (since it can detect optimal rate even if level of noise or loss rate is high).
+Did some testing for such connections, but for this overview skipping the results.
+
+
+
+
+For kernel3 the results are worse and for PK3C need at least 30 seconds of iperf test for seeing this more or less balanced results (and don't forget to init "tc" and other params before running test with kernel3):
+[ 70]   0.00-30.16  sec  3.55 MBytes   987 Kbits/sec                  receiver
+[ 72]   0.00-30.16  sec  5.87 MBytes  1.63 Mbits/sec                  receiver
+[ 74]   0.00-30.16  sec  10.6 MBytes  2.96 Mbits/sec                  receiver
+[ 76]   0.00-30.16  sec  8.27 MBytes  2.30 Mbits/sec                  receiver
+[ 78]   0.00-30.16  sec  6.29 MBytes  1.75 Mbits/sec                  receiver
+[ 80]   0.00-30.16  sec  8.12 MBytes  2.26 Mbits/sec                  receiver
+[ 82]   0.00-30.16  sec  7.07 MBytes  1.97 Mbits/sec                  receiver
+[ 84]   0.00-30.16  sec  4.73 MBytes  1.31 Mbits/sec                  receiver
+[ 86]   0.00-30.16  sec  8.86 MBytes  2.46 Mbits/sec                  receiver
+[ 88]   0.00-30.16  sec  6.96 MBytes  1.93 Mbits/sec                  receiver
+[ 90]   0.00-30.16  sec  5.51 MBytes  1.53 Mbits/sec                  receiver
+[ 92]   0.00-30.16  sec  5.76 MBytes  1.60 Mbits/sec                  receiver
+[ 94]   0.00-30.16  sec  5.25 MBytes  1.46 Mbits/sec                  receiver
+[ 96]   0.00-30.16  sec  8.26 MBytes  2.30 Mbits/sec                  receiver
+[ 98]   0.00-30.16  sec  7.53 MBytes  2.09 Mbits/sec                  receiver
+[100]   0.00-30.16  sec  4.59 MBytes  1.28 Mbits/sec                  receiver
+[102]   0.00-30.16  sec  8.75 MBytes  2.43 Mbits/sec                  receiver
+[104]   0.00-30.16  sec  6.34 MBytes  1.76 Mbits/sec                  receiver
+[SUM]   0.00-30.16  sec   351 MBytes  97.7 Mbits/sec                  receiver
+
+
+, however for cubic for one minute test for kernel3 the results are similar:
+[ 32]   0.00-55.54  sec  11.0 MBytes  1.67 Mbits/sec                  receiver
+[ 34]   0.00-55.54  sec  14.0 MBytes  2.12 Mbits/sec                  receiver
+[ 36]   0.00-55.54  sec  15.7 MBytes  2.38 Mbits/sec                  receiver
+[ 38]   0.00-55.54  sec  13.2 MBytes  1.99 Mbits/sec                  receiver
+[ 40]   0.00-55.54  sec  13.0 MBytes  1.96 Mbits/sec                  receiver
+[ 42]   0.00-55.54  sec  13.2 MBytes  1.99 Mbits/sec                  receiver
+[ 44]   0.00-55.54  sec  17.3 MBytes  2.61 Mbits/sec                  receiver
+[ 46]   0.00-55.54  sec  14.9 MBytes  2.24 Mbits/sec                  receiver
+[ 48]   0.00-55.54  sec  11.2 MBytes  1.70 Mbits/sec                  receiver
+[ 50]   0.00-55.54  sec  19.1 MBytes  2.89 Mbits/sec                  receiver
+[ 52]   0.00-55.54  sec  10.2 MBytes  1.54 Mbits/sec                  receiver
+[ 54]   0.00-55.54  sec  18.6 MBytes  2.82 Mbits/sec                  receiver
+[ 56]   0.00-55.54  sec  15.0 MBytes  2.26 Mbits/sec                  receiver
+[ 58]   0.00-55.54  sec  10.8 MBytes  1.63 Mbits/sec                  receiver
+[ 60]   0.00-55.54  sec  14.5 MBytes  2.19 Mbits/sec                  receiver
+[ 62]   0.00-55.54  sec  11.9 MBytes  1.80 Mbits/sec                  receiver
+[ 64]   0.00-55.54  sec  13.3 MBytes  2.01 Mbits/sec                  receiver
+[ 66]   0.00-55.54  sec  15.0 MBytes  2.27 Mbits/sec                  receiver
+[ 68]   0.00-55.54  sec  13.8 MBytes  2.09 Mbits/sec                  receiver
+[ 70]   0.00-55.54  sec  16.6 MBytes  2.51 Mbits/sec                  receiver
+[ 72]   0.00-55.54  sec  15.0 MBytes  2.26 Mbits/sec                  receiver
+[ 74]   0.00-55.54  sec  12.8 MBytes  1.93 Mbits/sec                  receiver
+[ 76]   0.00-55.54  sec  15.0 MBytes  2.27 Mbits/sec                  receiver
+[ 78]   0.00-55.54  sec  16.3 MBytes  2.46 Mbits/sec                  receiver
+[ 80]   0.00-55.54  sec  11.1 MBytes  1.68 Mbits/sec                  receiver
+[ 82]   0.00-55.54  sec  15.0 MBytes  2.27 Mbits/sec                  receiver
+[ 84]   0.00-55.54  sec  13.0 MBytes  1.96 Mbits/sec                  receiver
+[ 86]   0.00-55.54  sec  13.6 MBytes  2.05 Mbits/sec                  receiver
+[ 88]   0.00-55.54  sec  14.9 MBytes  2.26 Mbits/sec                  receiver
+[ 90]   0.00-55.54  sec  12.6 MBytes  1.91 Mbits/sec                  receiver
+[ 92]   0.00-55.54  sec  14.3 MBytes  2.16 Mbits/sec                  receiver
+[ 94]   0.00-55.54  sec  11.0 MBytes  1.66 Mbits/sec                  receiver
+[ 96]   0.00-55.54  sec  13.8 MBytes  2.08 Mbits/sec                  receiver
+[ 98]   0.00-55.54  sec  15.2 MBytes  2.29 Mbits/sec                  receiver
+[100]   0.00-55.54  sec  16.6 MBytes  2.51 Mbits/sec                  receiver
+[102]   0.00-55.54  sec  13.0 MBytes  1.97 Mbits/sec                  receiver
+[104]   0.00-55.54  sec  17.3 MBytes  2.62 Mbits/sec                  receiver
+[SUM]   0.00-55.54  sec   707 MBytes   107 Mbits/sec                  receiver
+
+, if trying the same test for 5 parallel connections, for kernel3 the result is (for PK3C):
+
+[  5]   0.00-30.16  sec  82.7 MBytes  23.0 Mbits/sec                  receiver
+[  8]   0.00-30.16  sec  83.7 MBytes  23.3 Mbits/sec                  receiver
+[ 10]   0.00-30.16  sec  57.7 MBytes  16.0 Mbits/sec                  receiver
+[ 12]   0.00-30.16  sec  77.7 MBytes  21.6 Mbits/sec                  receiver
+[ 14]   0.00-30.16  sec  65.3 MBytes  18.2 Mbits/sec                  receiver
+[SUM]   0.00-30.16  sec   367 MBytes   102 Mbits/sec                  receiver
+and
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   111 MBytes  15.5 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   154 MBytes  21.5 Mbits/sec                  receiver
+[ 10]   0.00-60.16  sec   147 MBytes  20.5 Mbits/sec                  receiver
+[ 12]   0.00-60.16  sec   189 MBytes  26.3 Mbits/sec                  receiver
+[ 14]   0.00-60.16  sec   150 MBytes  21.0 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   752 MBytes   105 Mbits/sec                  receiver
+and
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-55.55  sec   140 MBytes  21.2 Mbits/sec                  receiver
+[  8]   0.00-55.55  sec   151 MBytes  22.8 Mbits/sec                  receiver
+[ 10]   0.00-55.55  sec   135 MBytes  20.5 Mbits/sec                  receiver
+[ 12]   0.00-55.55  sec   121 MBytes  18.3 Mbits/sec                  receiver
+[ 14]   0.00-55.55  sec   151 MBytes  22.8 Mbits/sec                  receiver
+[SUM]   0.00-55.55  sec   700 MBytes   106 Mbits/sec                  receiver
+and 10 connections:
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec  62.8 MBytes  8.76 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec  40.7 MBytes  5.67 Mbits/sec                  receiver
+[ 10]   0.00-60.16  sec  93.7 MBytes  13.1 Mbits/sec                  receiver
+[ 12]   0.00-60.16  sec  96.6 MBytes  13.5 Mbits/sec                  receiver
+[ 14]   0.00-60.16  sec  72.8 MBytes  10.2 Mbits/sec                  receiver
+[ 16]   0.00-60.16  sec  62.5 MBytes  8.71 Mbits/sec                  receiver
+[ 18]   0.00-60.16  sec  83.2 MBytes  11.6 Mbits/sec                  receiver
+[ 20]   0.00-60.16  sec  98.6 MBytes  13.8 Mbits/sec                  receiver
+[ 22]   0.00-60.16  sec  56.8 MBytes  7.92 Mbits/sec                  receiver
+[ 24]   0.00-60.16  sec  74.4 MBytes  10.4 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   742 MBytes   103 Mbits/sec                  receiver
+and
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-30.16  sec  55.5 MBytes  15.4 Mbits/sec                  receiver
+[  8]   0.00-30.16  sec  29.4 MBytes  8.17 Mbits/sec                  receiver
+[ 10]   0.00-30.16  sec  32.2 MBytes  8.97 Mbits/sec                  receiver
+[ 12]   0.00-30.16  sec  30.7 MBytes  8.53 Mbits/sec                  receiver
+[ 14]   0.00-30.16  sec  38.8 MBytes  10.8 Mbits/sec                  receiver
+[ 16]   0.00-30.16  sec  46.3 MBytes  12.9 Mbits/sec                  receiver
+[ 18]   0.00-30.16  sec  40.0 MBytes  11.1 Mbits/sec                  receiver
+[ 20]   0.00-30.16  sec  40.4 MBytes  11.2 Mbits/sec                  receiver
+[ 22]   0.00-30.16  sec  29.0 MBytes  8.06 Mbits/sec                  receiver
+[ 24]   0.00-30.16  sec  33.5 MBytes  9.32 Mbits/sec                  receiver
+[SUM]   0.00-30.16  sec   376 MBytes   105 Mbits/sec                  receiver
+
+
+
+, and for kernel3 for cubic similar 5 connections results are (note that need to revert back all networking params before trying cubic, like no *mem* tcp/ip and no tc):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   148 MBytes  20.6 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   157 MBytes  21.9 Mbits/sec                  receiver
+[ 10]   0.00-60.16  sec   196 MBytes  27.3 Mbits/sec                  receiver
+[ 12]   0.00-60.16  sec   106 MBytes  14.8 Mbits/sec                  receiver
+[ 14]   0.00-60.16  sec   134 MBytes  18.7 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   741 MBytes   103 Mbits/sec                  receiver
+and for 10 connections:
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.17  sec  45.9 MBytes  6.40 Mbits/sec                  receiver
+[  8]   0.00-60.17  sec  80.9 MBytes  11.3 Mbits/sec                  receiver
+[ 10]   0.00-60.17  sec  99.1 MBytes  13.8 Mbits/sec                  receiver
+[ 12]   0.00-60.17  sec  50.1 MBytes  6.99 Mbits/sec                  receiver
+[ 14]   0.00-60.17  sec  56.6 MBytes  7.89 Mbits/sec                  receiver
+[ 16]   0.00-60.17  sec  54.9 MBytes  7.65 Mbits/sec                  receiver
+[ 18]   0.00-60.17  sec  76.6 MBytes  10.7 Mbits/sec                  receiver
+[ 20]   0.00-60.17  sec  59.4 MBytes  8.29 Mbits/sec                  receiver
+[ 22]   0.00-60.17  sec  97.1 MBytes  13.5 Mbits/sec                  receiver
+[ 24]   0.00-60.17  sec  62.4 MBytes  8.71 Mbits/sec                  receiver
+[SUM]   0.00-60.17  sec   683 MBytes  95.2 Mbits/sec                  receiver
+--- so you can see that PK3C wins with 106 instead of 103 for 5 connections and with 103 instead of 95.2 for 10 connections.
+
+
+For kernel4 for similar 5 connections results are, for PK3C:
+[  5]  59.00-60.00  sec  2.50 MBytes  21.0 Mbits/sec   14   1.17 MBytes       
+[  7]  59.00-60.00  sec  2.25 MBytes  18.8 Mbits/sec   11    866 KBytes       
+[  9]  59.00-60.00  sec  2.27 MBytes  19.1 Mbits/sec    4    542 KBytes       
+[ 11]  59.00-60.00  sec  2.48 MBytes  20.8 Mbits/sec    7    891 KBytes       
+[ 13]  59.00-60.00  sec  3.74 MBytes  31.4 Mbits/sec    9   1.01 MBytes       
+[SUM]  59.00-60.00  sec  13.2 MBytes   111 Mbits/sec   45 
+     or (similar 5 connections, but if from sender side of view and with Retr):
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec   142 MBytes  19.9 Mbits/sec  6178             sender
+[  5]   0.00-60.16  sec   138 MBytes  19.2 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec   124 MBytes  17.3 Mbits/sec  5250             sender
+[  7]   0.00-60.16  sec   118 MBytes  16.5 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec   125 MBytes  17.5 Mbits/sec  5557             sender
+[  9]   0.00-60.16  sec   120 MBytes  16.8 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec   110 MBytes  15.4 Mbits/sec  4120             sender
+[ 11]   0.00-60.16  sec   104 MBytes  14.6 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec   179 MBytes  25.0 Mbits/sec  9207             sender
+[ 13]   0.00-60.16  sec   174 MBytes  24.3 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec   680 MBytes  95.1 Mbits/sec  30312             sender
+[SUM]   0.00-60.16  sec   655 MBytes  91.3 Mbits/sec                  receiver
+, and 10 connections:
+[  5]  60.00-60.16  sec   116 KBytes  5.86 Mbits/sec                  
+[  8]  60.00-60.16  sec   223 KBytes  11.3 Mbits/sec                  
+[ 10]  60.00-60.16  sec   351 KBytes  17.8 Mbits/sec                  
+[ 12]  60.00-60.16  sec   135 KBytes  6.84 Mbits/sec                  
+[ 14]  60.00-60.16  sec   358 KBytes  18.1 Mbits/sec                  
+[ 16]  60.00-60.16  sec   381 KBytes  19.3 Mbits/sec                  
+[ 18]  60.00-60.16  sec   323 KBytes  16.4 Mbits/sec                  
+[ 20]  60.00-60.16  sec   172 KBytes  8.72 Mbits/sec                  
+[ 22]  60.00-60.16  sec   257 KBytes  13.0 Mbits/sec                  
+[ 24]  60.00-60.16  sec   224 KBytes  11.4 Mbits/sec                  
+[SUM]  60.00-60.16  sec  2.48 MBytes   129 Mbits/sec ,
+and if similar 10 connections with Retr (from sender point of view and this time 105 MBits/sec of sender speed for similar 129 MBits/sec of receiver, means that
+iperf3 can make diff results from sender point of view and from receiver point of view, but anyway this is higher than similar cubic ~90MBits/sec result):
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  48.8 MBytes  6.82 Mbits/sec  748             sender
+[  5]   0.00-60.16  sec  43.2 MBytes  6.03 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  62.5 MBytes  8.74 Mbits/sec  972             sender
+[  7]   0.00-60.16  sec  57.8 MBytes  8.06 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  87.5 MBytes  12.2 Mbits/sec  1114             sender
+[  9]   0.00-60.16  sec  82.3 MBytes  11.5 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  68.8 MBytes  9.61 Mbits/sec  1174             sender
+[ 11]   0.00-60.16  sec  63.0 MBytes  8.78 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec  87.5 MBytes  12.2 Mbits/sec  1315             sender
+[ 13]   0.00-60.16  sec  83.0 MBytes  11.6 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  62.5 MBytes  8.74 Mbits/sec  1073             sender
+[ 15]   0.00-60.16  sec  57.8 MBytes  8.06 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec  90.0 MBytes  12.6 Mbits/sec  1346             sender
+[ 17]   0.00-60.16  sec  85.6 MBytes  11.9 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  1263             sender
+[ 19]   0.00-60.16  sec  67.2 MBytes  9.36 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec  80.0 MBytes  11.2 Mbits/sec  1268             sender
+[ 21]   0.00-60.16  sec  74.3 MBytes  10.4 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec  87.5 MBytes  12.2 Mbits/sec  1455             sender
+[ 23]   0.00-60.16  sec  82.5 MBytes  11.5 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec   748 MBytes   105 Mbits/sec  11728             sender
+[SUM]   0.00-60.16  sec   697 MBytes  97.1 Mbits/sec                  receiver
+-- and you can see that for kernel4 similar algorithm works more accurate giving higher results (since the rtt/etc measurements in kernel3 much more noisy than in kernel4).
+
+
+
+or 5 connections kernel4 for pk3c using cell-phone internet (slower connection where the bottleneck 12.7 Mbits/sec is speed of phone connection):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.20  sec  28.7 MBytes  4.00 Mbits/sec                  receiver
+[  8]   0.00-60.20  sec  15.9 MBytes  2.22 Mbits/sec                  receiver
+[ 10]   0.00-60.20  sec  18.7 MBytes  2.60 Mbits/sec                  receiver
+[ 12]   0.00-60.20  sec  12.5 MBytes  1.75 Mbits/sec                  receiver
+[ 14]   0.00-60.20  sec  15.6 MBytes  2.17 Mbits/sec                  receiver
+[SUM]   0.00-60.20  sec  91.3 MBytes  12.7 Mbits/sec                  receiver
+, or similar for cubic (so cubic balancing better in this case, but PK3C a little bit faster):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.35  sec  18.9 MBytes  2.62 Mbits/sec                  receiver
+[  8]   0.00-60.35  sec  20.5 MBytes  2.85 Mbits/sec                  receiver
+[ 10]   0.00-60.35  sec  17.0 MBytes  2.36 Mbits/sec                  receiver
+[ 12]   0.00-60.35  sec  16.9 MBytes  2.35 Mbits/sec                  receiver
+[ 14]   0.00-60.35  sec  17.7 MBytes  2.45 Mbits/sec                  receiver
+[SUM]   0.00-60.35  sec  90.9 MBytes  12.6 Mbits/sec                  receiver
+
+
+
+and for kernel4 for cubic:
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   137 MBytes  19.1 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   144 MBytes  20.0 Mbits/sec                  receiver
+[ 10]   0.00-60.16  sec   108 MBytes  15.1 Mbits/sec                  receiver
+[ 12]   0.00-60.16  sec   114 MBytes  15.9 Mbits/sec                  receiver
+[ 14]   0.00-60.16  sec   109 MBytes  15.2 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   612 MBytes  85.3 Mbits/sec                  receiver
+or 10 connections for cubic:
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec  59.3 MBytes  8.27 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec  61.7 MBytes  8.60 Mbits/sec                  receiver
+[ 10]   0.00-60.16  sec  53.3 MBytes  7.43 Mbits/sec                  receiver
+[ 12]   0.00-60.16  sec  52.1 MBytes  7.26 Mbits/sec                  receiver
+[ 14]   0.00-60.16  sec  66.0 MBytes  9.20 Mbits/sec                  receiver
+[ 16]   0.00-60.16  sec  57.7 MBytes  8.05 Mbits/sec                  receiver
+[ 18]   0.00-60.16  sec  67.7 MBytes  9.44 Mbits/sec                  receiver
+[ 20]   0.00-60.16  sec  65.6 MBytes  9.15 Mbits/sec                  receiver
+[ 22]   0.00-60.16  sec  81.4 MBytes  11.3 Mbits/sec                  receiver
+[ 24]   0.00-60.16  sec  61.4 MBytes  8.57 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   626 MBytes  87.3 Mbits/sec                  receiver
+or same 10 connections for cubic (kernel4) with Retr:
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  65.0 MBytes  9.09 Mbits/sec  1013             sender
+[  5]   0.00-60.16  sec  59.3 MBytes  8.27 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  67.5 MBytes  9.44 Mbits/sec  1014             sender
+[  7]   0.00-60.16  sec  61.7 MBytes  8.60 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  58.8 MBytes  8.21 Mbits/sec  595             sender
+[  9]   0.00-60.16  sec  53.3 MBytes  7.43 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  57.5 MBytes  8.04 Mbits/sec  944             sender
+[ 11]   0.00-60.16  sec  52.1 MBytes  7.26 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  747             sender
+[ 13]   0.00-60.16  sec  66.0 MBytes  9.20 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  62.5 MBytes  8.74 Mbits/sec  234             sender
+[ 15]   0.00-60.16  sec  57.7 MBytes  8.05 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  1240             sender
+[ 17]   0.00-60.16  sec  67.7 MBytes  9.44 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  792             sender
+[ 19]   0.00-60.16  sec  65.6 MBytes  9.15 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec  86.2 MBytes  12.1 Mbits/sec  1040             sender
+[ 21]   0.00-60.16  sec  81.4 MBytes  11.3 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec  66.2 MBytes  9.26 Mbits/sec  699             sender
+[ 23]   0.00-60.16  sec  61.4 MBytes  8.57 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec  8318             sender
+[SUM]   0.00-60.16  sec   626 MBytes  87.3 Mbits/sec                  receiver
+
+
+and for kernel4 for PK3C for 2 connections (one min test):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   288 MBytes  40.2 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   304 MBytes  42.4 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   593 MBytes  82.6 Mbits/sec                  receiver
+
+and for kernel3 for cubic for 2 connections (one min test):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   306 MBytes  42.7 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   310 MBytes  43.3 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   616 MBytes  85.9 Mbits/sec                  receiver
+
+, and for kernel3 for PK3C for 2 connections (one min test):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   341 MBytes  47.6 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   388 MBytes  54.1 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   729 MBytes   102 Mbits/sec                  receiver
+
+, and for kernel4 for cubic for 2 connections (one min test):
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.16  sec   311 MBytes  43.4 Mbits/sec                  receiver
+[  8]   0.00-60.16  sec   280 MBytes  39.0 Mbits/sec                  receiver
+[SUM]   0.00-60.16  sec   591 MBytes  82.4 Mbits/sec                  receiver
+-- so for small amount of connections cubic does much worse.
+
+
+Before making conslusion, I should give at least few other small examples for higher speed networks:
+
+kernel4 local 10 connections with cubic:
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[  8]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 10]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 12]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 14]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 16]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 18]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 20]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 22]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 24]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[SUM]   0.00-60.03  sec  6.58 GBytes   941 Mbits/sec                  receiver
+and similar with cubic from sender point of view for seeing Retr:
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[  5]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[  7]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[  9]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 11]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 13]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 15]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 17]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 19]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 21]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec   679 MBytes  94.9 Mbits/sec    0             sender
+[ 23]   0.00-60.03  sec   673 MBytes  94.1 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  6.63 GBytes   949 Mbits/sec    0             sender
+[SUM]   0.00-60.03  sec  6.58 GBytes   941 Mbits/sec                  receiver
+
+
+, similar kernel4 local 10 connections with PK3C:
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-60.03  sec   676 MBytes  94.5 Mbits/sec                  receiver
+[  8]   0.00-60.03  sec   676 MBytes  94.4 Mbits/sec                  receiver
+[ 10]   0.00-60.03  sec   675 MBytes  94.4 Mbits/sec                  receiver
+[ 12]   0.00-60.03  sec   677 MBytes  94.6 Mbits/sec                  receiver
+[ 14]   0.00-60.03  sec   665 MBytes  92.9 Mbits/sec                  receiver
+[ 16]   0.00-60.03  sec   670 MBytes  93.6 Mbits/sec                  receiver
+[ 18]   0.00-60.03  sec   663 MBytes  92.7 Mbits/sec                  receiver
+[ 20]   0.00-60.03  sec   660 MBytes  92.3 Mbits/sec                  receiver
+[ 22]   0.00-60.03  sec   670 MBytes  93.6 Mbits/sec                  receiver
+[ 24]   0.00-60.03  sec   676 MBytes  94.4 Mbits/sec                  receiver
+[SUM]   0.00-60.03  sec  6.55 GBytes   937 Mbits/sec                  receiver
+and similar from sender side (for seeing Retr):
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec   681 MBytes  95.2 Mbits/sec  3069             sender
+[  5]   0.00-60.03  sec   676 MBytes  94.5 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec   681 MBytes  95.2 Mbits/sec  649             sender
+[  7]   0.00-60.03  sec   676 MBytes  94.4 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec   681 MBytes  95.2 Mbits/sec  231             sender
+[  9]   0.00-60.03  sec   675 MBytes  94.4 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec   682 MBytes  95.4 Mbits/sec  1155             sender
+[ 11]   0.00-60.03  sec   677 MBytes  94.6 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec   670 MBytes  93.7 Mbits/sec  1155             sender
+[ 13]   0.00-60.03  sec   665 MBytes  92.9 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec   675 MBytes  94.4 Mbits/sec  176             sender
+[ 15]   0.00-60.03  sec   670 MBytes  93.6 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec   669 MBytes  93.5 Mbits/sec  825             sender
+[ 17]   0.00-60.03  sec   663 MBytes  92.7 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec   666 MBytes  93.1 Mbits/sec  363             sender
+[ 19]   0.00-60.03  sec   660 MBytes  92.3 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec   675 MBytes  94.4 Mbits/sec  253             sender
+[ 21]   0.00-60.03  sec   670 MBytes  93.6 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec   681 MBytes  95.2 Mbits/sec  1969             sender
+[ 23]   0.00-60.03  sec   676 MBytes  94.4 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  6.60 GBytes   945 Mbits/sec  9845             sender
+[SUM]   0.00-60.03  sec  6.55 GBytes   937 Mbits/sec                  receiver
+-- you can see that PK3C more aggressive (trying sending a little bit faster than it should be, so Retr happened).
+
+
+
+And 100 local connections with cubic (using kernel4):
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    3             sender
+[  5]   0.00-60.00  sec  69.5 MBytes  9.71 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[  7]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  954             sender
+[  9]   0.00-60.00  sec  34.7 MBytes  4.86 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[ 11]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[ 13]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[ 15]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[ 17]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   12             sender
+[ 19]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    3             sender
+[ 21]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 23]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 25]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 25]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 27]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[ 27]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 29]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 29]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 31]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 31]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 33]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 33]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 35]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 35]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 37]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 37]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 39]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    4             sender
+[ 39]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 41]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 41]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 43]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 43]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 45]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 45]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 47]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 47]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 49]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[ 49]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 51]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   10             sender
+[ 51]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 53]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 53]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 55]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 55]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 57]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   10             sender
+[ 57]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 59]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 59]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 61]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   11             sender
+[ 61]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 63]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   11             sender
+[ 63]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 65]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[ 65]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 67]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 67]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 69]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 69]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 71]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 71]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 73]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 73]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 75]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 75]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 77]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    3             sender
+[ 77]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 79]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[ 79]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 81]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 81]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 83]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 83]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 85]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[ 85]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 87]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[ 87]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 89]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    8             sender
+[ 89]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 91]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[ 91]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 93]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   10             sender
+[ 93]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 95]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[ 95]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[ 97]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   11             sender
+[ 97]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[ 99]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    4             sender
+[ 99]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[101]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[101]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[103]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[103]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[105]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[105]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[107]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[107]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[109]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[109]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[111]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[111]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[113]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  882             sender
+[113]   0.00-60.00  sec  35.0 MBytes  4.89 Mbits/sec                  receiver
+[115]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[115]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[117]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    3             sender
+[117]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[119]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    8             sender
+[119]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[121]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[121]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[123]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   11             sender
+[123]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[125]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[125]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[127]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[127]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[129]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    8             sender
+[129]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[131]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[131]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[133]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  881             sender
+[133]   0.00-60.00  sec  35.0 MBytes  4.89 Mbits/sec                  receiver
+[135]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[135]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[137]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   10             sender
+[137]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[139]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[139]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[141]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[141]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[143]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[143]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[145]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[145]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[147]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   10             sender
+[147]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[149]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[149]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[151]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[151]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[153]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  939             sender
+[153]   0.00-60.00  sec  34.4 MBytes  4.81 Mbits/sec                  receiver
+[155]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[155]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[157]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[157]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[159]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[159]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[161]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   10             sender
+[161]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[163]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[163]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[165]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  967             sender
+[165]   0.00-60.00  sec  34.4 MBytes  4.82 Mbits/sec                  receiver
+[167]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    4             sender
+[167]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[169]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[169]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[171]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[171]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[173]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    2             sender
+[173]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[175]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[175]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[177]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    2             sender
+[177]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[179]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    6             sender
+[179]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[181]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    5             sender
+[181]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[183]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[183]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[185]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  948             sender
+[185]   0.00-60.00  sec  34.7 MBytes  4.85 Mbits/sec                  receiver
+[187]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[187]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[189]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    2             sender
+[189]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[191]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[191]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[193]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    9             sender
+[193]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[195]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    2             sender
+[195]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[197]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    0             sender
+[197]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[199]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    8             sender
+[199]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[201]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec    7             sender
+[201]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[203]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec   11             sender
+[203]   0.00-60.00  sec  69.4 MBytes  9.70 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  7.12 GBytes  1.02 Gbits/sec  6142             sender
+[SUM]   0.00-60.00  sec  6.58 GBytes   941 Mbits/sec                  receiver
+
+
+
+and 100 similar local connections with PK3C (using kernel40:
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  77.5 MBytes  10.8 Mbits/sec  527             sender
+[  5]   0.00-60.00  sec  72.2 MBytes  10.1 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  296             sender
+[  7]   0.00-60.00  sec  67.3 MBytes  9.41 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  258             sender
+[  9]   0.00-60.00  sec  66.7 MBytes  9.32 Mbits/sec                  receiver
+[ 11]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  256             sender
+[ 11]   0.00-60.00  sec  67.6 MBytes  9.45 Mbits/sec                  receiver
+[ 13]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  256             sender
+[ 13]   0.00-60.00  sec  66.4 MBytes  9.29 Mbits/sec                  receiver
+[ 15]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  416             sender
+[ 15]   0.00-60.00  sec  71.4 MBytes  9.98 Mbits/sec                  receiver
+[ 17]   0.00-60.00  sec  33.8 MBytes  4.72 Mbits/sec  122             sender
+[ 17]   0.00-60.00  sec  28.0 MBytes  3.92 Mbits/sec                  receiver
+[ 19]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  300             sender
+[ 19]   0.00-60.00  sec  69.3 MBytes  9.69 Mbits/sec                  receiver
+[ 21]   0.00-60.00  sec  77.5 MBytes  10.8 Mbits/sec  437             sender
+[ 21]   0.00-60.00  sec  71.8 MBytes  10.0 Mbits/sec                  receiver
+[ 23]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  353             sender
+[ 23]   0.00-60.00  sec  66.7 MBytes  9.32 Mbits/sec                  receiver
+[ 25]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec  126             sender
+[ 25]   0.00-60.00  sec  64.7 MBytes  9.05 Mbits/sec                  receiver
+[ 27]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  316             sender
+[ 27]   0.00-60.00  sec  68.0 MBytes  9.50 Mbits/sec                  receiver
+[ 29]   0.00-60.00  sec  77.5 MBytes  10.8 Mbits/sec  582             sender
+[ 29]   0.00-60.00  sec  72.6 MBytes  10.2 Mbits/sec                  receiver
+[ 31]   0.00-60.00  sec  80.0 MBytes  11.2 Mbits/sec  804             sender
+[ 31]   0.00-60.00  sec  74.1 MBytes  10.4 Mbits/sec                  receiver
+[ 33]   0.00-60.00  sec  87.5 MBytes  12.2 Mbits/sec  1132             sender
+[ 33]   0.00-60.00  sec  81.7 MBytes  11.4 Mbits/sec                  receiver
+[ 35]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec  272             sender
+[ 35]   0.00-60.00  sec  65.1 MBytes  9.10 Mbits/sec                  receiver
+[ 37]   0.00-60.00  sec  77.5 MBytes  10.8 Mbits/sec  435             sender
+[ 37]   0.00-60.00  sec  71.6 MBytes  10.0 Mbits/sec                  receiver
+[ 39]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  357             sender
+[ 39]   0.00-60.00  sec  69.3 MBytes  9.69 Mbits/sec                  receiver
+[ 41]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  579             sender
+[ 41]   0.00-60.00  sec  70.1 MBytes  9.80 Mbits/sec                  receiver
+[ 43]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  183             sender
+[ 43]   0.00-60.00  sec  65.5 MBytes  9.16 Mbits/sec                  receiver
+[ 45]   0.00-60.00  sec  77.5 MBytes  10.8 Mbits/sec  587             sender
+[ 45]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec                  receiver
+[ 47]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  556             sender
+[ 47]   0.00-60.00  sec  68.2 MBytes  9.53 Mbits/sec                  receiver
+[ 49]   0.00-60.00  sec  45.0 MBytes  6.29 Mbits/sec  122             sender
+[ 49]   0.00-60.00  sec  40.2 MBytes  5.62 Mbits/sec                  receiver
+[ 51]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  458             sender
+[ 51]   0.00-60.00  sec  71.0 MBytes  9.92 Mbits/sec                  receiver
+[ 53]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  380             sender
+[ 53]   0.00-60.00  sec  69.6 MBytes  9.73 Mbits/sec                  receiver
+[ 55]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  216             sender
+[ 55]   0.00-60.00  sec  67.4 MBytes  9.42 Mbits/sec                  receiver
+[ 57]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec  141             sender
+[ 57]   0.00-60.00  sec  64.6 MBytes  9.03 Mbits/sec                  receiver
+[ 59]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  260             sender
+[ 59]   0.00-60.00  sec  67.2 MBytes  9.39 Mbits/sec                  receiver
+[ 61]   0.00-60.00  sec  68.8 MBytes  9.61 Mbits/sec  160             sender
+[ 61]   0.00-60.00  sec  63.8 MBytes  8.92 Mbits/sec                  receiver
+[ 63]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  286             sender
+[ 63]   0.00-60.00  sec  66.7 MBytes  9.33 Mbits/sec                  receiver
+[ 65]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  471             sender
+[ 65]   0.00-60.00  sec  69.5 MBytes  9.72 Mbits/sec                  receiver
+[ 67]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  275             sender
+[ 67]   0.00-60.00  sec  65.9 MBytes  9.22 Mbits/sec                  receiver
+[ 69]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec   96             sender
+[ 69]   0.00-60.00  sec  64.7 MBytes  9.05 Mbits/sec                  receiver
+[ 71]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  215             sender
+[ 71]   0.00-60.00  sec  67.9 MBytes  9.49 Mbits/sec                  receiver
+[ 73]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  297             sender
+[ 73]   0.00-60.00  sec  69.8 MBytes  9.76 Mbits/sec                  receiver
+[ 75]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  266             sender
+[ 75]   0.00-60.00  sec  67.6 MBytes  9.46 Mbits/sec                  receiver
+[ 77]   0.00-60.00  sec  81.2 MBytes  11.4 Mbits/sec  690             sender
+[ 77]   0.00-60.00  sec  75.7 MBytes  10.6 Mbits/sec                  receiver
+[ 79]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  388             sender
+[ 79]   0.00-60.00  sec  70.3 MBytes  9.83 Mbits/sec                  receiver
+[ 81]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  349             sender
+[ 81]   0.00-60.00  sec  68.2 MBytes  9.53 Mbits/sec                  receiver
+[ 83]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  356             sender
+[ 83]   0.00-60.00  sec  67.4 MBytes  9.43 Mbits/sec                  receiver
+[ 85]   0.00-60.00  sec  40.0 MBytes  5.59 Mbits/sec  126             sender
+[ 85]   0.00-60.00  sec  34.8 MBytes  4.86 Mbits/sec                  receiver
+[ 87]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  338             sender
+[ 87]   0.00-60.00  sec  68.2 MBytes  9.54 Mbits/sec                  receiver
+[ 89]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  422             sender
+[ 89]   0.00-60.00  sec  70.4 MBytes  9.84 Mbits/sec                  receiver
+[ 91]   0.00-60.00  sec  78.8 MBytes  11.0 Mbits/sec  619             sender
+[ 91]   0.00-60.00  sec  73.5 MBytes  10.3 Mbits/sec                  receiver
+[ 93]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  388             sender
+[ 93]   0.00-60.00  sec  70.4 MBytes  9.84 Mbits/sec                  receiver
+[ 95]   0.00-60.00  sec  56.2 MBytes  7.86 Mbits/sec  179             sender
+[ 95]   0.00-60.00  sec  51.3 MBytes  7.17 Mbits/sec                  receiver
+[ 97]   0.00-60.00  sec  77.5 MBytes  10.8 Mbits/sec  502             sender
+[ 97]   0.00-60.00  sec  72.3 MBytes  10.1 Mbits/sec                  receiver
+[ 99]   0.00-60.00  sec  32.5 MBytes  4.54 Mbits/sec  179             sender
+[ 99]   0.00-60.00  sec  27.0 MBytes  3.78 Mbits/sec                  receiver
+[101]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  404             sender
+[101]   0.00-60.00  sec  70.4 MBytes  9.85 Mbits/sec                  receiver
+[103]   0.00-60.00  sec  57.5 MBytes  8.04 Mbits/sec  185             sender
+[103]   0.00-60.00  sec  51.6 MBytes  7.22 Mbits/sec                  receiver
+[105]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  497             sender
+[105]   0.00-60.00  sec  70.5 MBytes  9.86 Mbits/sec                  receiver
+[107]   0.00-60.00  sec  83.8 MBytes  11.7 Mbits/sec  922             sender
+[107]   0.00-60.00  sec  77.8 MBytes  10.9 Mbits/sec                  receiver
+[109]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  250             sender
+[109]   0.00-60.00  sec  66.8 MBytes  9.33 Mbits/sec                  receiver
+[111]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  353             sender
+[111]   0.00-60.00  sec  69.1 MBytes  9.65 Mbits/sec                  receiver
+[113]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec  185             sender
+[113]   0.00-60.00  sec  64.7 MBytes  9.04 Mbits/sec                  receiver
+[115]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  242             sender
+[115]   0.00-60.00  sec  68.0 MBytes  9.51 Mbits/sec                  receiver
+[117]   0.00-60.00  sec  95.0 MBytes  13.3 Mbits/sec  1114             sender
+[117]   0.00-60.00  sec  89.4 MBytes  12.5 Mbits/sec                  receiver
+[119]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  437             sender
+[119]   0.00-60.00  sec  71.0 MBytes  9.93 Mbits/sec                  receiver
+[121]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  409             sender
+[121]   0.00-60.00  sec  69.9 MBytes  9.78 Mbits/sec                  receiver
+[123]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  316             sender
+[123]   0.00-60.00  sec  68.1 MBytes  9.52 Mbits/sec                  receiver
+[125]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  246             sender
+[125]   0.00-60.00  sec  67.1 MBytes  9.38 Mbits/sec                  receiver
+[127]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  201             sender
+[127]   0.00-60.00  sec  65.7 MBytes  9.19 Mbits/sec                  receiver
+[129]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  193             sender
+[129]   0.00-60.00  sec  66.5 MBytes  9.29 Mbits/sec                  receiver
+[131]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  193             sender
+[131]   0.00-60.00  sec  66.2 MBytes  9.26 Mbits/sec                  receiver
+[133]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  331             sender
+[133]   0.00-60.00  sec  69.1 MBytes  9.66 Mbits/sec                  receiver
+[135]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  344             sender
+[135]   0.00-60.00  sec  68.5 MBytes  9.58 Mbits/sec                  receiver
+[137]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  322             sender
+[137]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec                  receiver
+[139]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  433             sender
+[139]   0.00-60.00  sec  70.4 MBytes  9.84 Mbits/sec                  receiver
+[141]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  266             sender
+[141]   0.00-60.00  sec  66.9 MBytes  9.36 Mbits/sec                  receiver
+[143]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  402             sender
+[143]   0.00-60.00  sec  69.9 MBytes  9.77 Mbits/sec                  receiver
+[145]   0.00-60.00  sec  78.8 MBytes  11.0 Mbits/sec  648             sender
+[145]   0.00-60.00  sec  73.1 MBytes  10.2 Mbits/sec                  receiver
+[147]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  287             sender
+[147]   0.00-60.00  sec  67.7 MBytes  9.46 Mbits/sec                  receiver
+[149]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  330             sender
+[149]   0.00-60.00  sec  69.4 MBytes  9.71 Mbits/sec                  receiver
+[151]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  220             sender
+[151]   0.00-60.00  sec  66.6 MBytes  9.31 Mbits/sec                  receiver
+[153]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  345             sender
+[153]   0.00-60.00  sec  67.1 MBytes  9.39 Mbits/sec                  receiver
+[155]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  233             sender
+[155]   0.00-60.00  sec  67.3 MBytes  9.42 Mbits/sec                  receiver
+[157]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  508             sender
+[157]   0.00-60.00  sec  69.7 MBytes  9.74 Mbits/sec                  receiver
+[159]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  425             sender
+[159]   0.00-60.00  sec  71.1 MBytes  9.95 Mbits/sec                  receiver
+[161]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  443             sender
+[161]   0.00-60.00  sec  70.0 MBytes  9.79 Mbits/sec                  receiver
+[163]   0.00-60.00  sec  97.5 MBytes  13.6 Mbits/sec  1582             sender
+[163]   0.00-60.00  sec  91.5 MBytes  12.8 Mbits/sec                  receiver
+[165]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  269             sender
+[165]   0.00-60.00  sec  68.8 MBytes  9.61 Mbits/sec                  receiver
+[167]   0.00-60.00  sec  47.5 MBytes  6.64 Mbits/sec  127             sender
+[167]   0.00-60.00  sec  42.0 MBytes  5.87 Mbits/sec                  receiver
+[169]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  333             sender
+[169]   0.00-60.00  sec  70.4 MBytes  9.84 Mbits/sec                  receiver
+[171]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  227             sender
+[171]   0.00-60.00  sec  65.4 MBytes  9.14 Mbits/sec                  receiver
+[173]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  491             sender
+[173]   0.00-60.00  sec  71.2 MBytes  9.95 Mbits/sec                  receiver
+[175]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  417             sender
+[175]   0.00-60.00  sec  69.8 MBytes  9.76 Mbits/sec                  receiver
+[177]   0.00-60.00  sec  80.0 MBytes  11.2 Mbits/sec  734             sender
+[177]   0.00-60.00  sec  74.6 MBytes  10.4 Mbits/sec                  receiver
+[179]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  497             sender
+[179]   0.00-60.00  sec  70.7 MBytes  9.89 Mbits/sec                  receiver
+[181]   0.00-60.00  sec  62.5 MBytes  8.74 Mbits/sec  231             sender
+[181]   0.00-60.00  sec  57.7 MBytes  8.06 Mbits/sec                  receiver
+[183]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  412             sender
+[183]   0.00-60.00  sec  70.4 MBytes  9.84 Mbits/sec                  receiver
+[185]   0.00-60.00  sec  76.2 MBytes  10.7 Mbits/sec  305             sender
+[185]   0.00-60.00  sec  70.2 MBytes  9.82 Mbits/sec                  receiver
+[187]   0.00-60.00  sec  37.5 MBytes  5.24 Mbits/sec   86             sender
+[187]   0.00-60.00  sec  32.0 MBytes  4.47 Mbits/sec                  receiver
+[189]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  256             sender
+[189]   0.00-60.00  sec  66.3 MBytes  9.27 Mbits/sec                  receiver
+[191]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  431             sender
+[191]   0.00-60.00  sec  69.5 MBytes  9.72 Mbits/sec                  receiver
+[193]   0.00-60.00  sec  78.8 MBytes  11.0 Mbits/sec  590             sender
+[193]   0.00-60.00  sec  73.7 MBytes  10.3 Mbits/sec                  receiver
+[195]   0.00-60.00  sec  71.2 MBytes  9.96 Mbits/sec  227             sender
+[195]   0.00-60.00  sec  65.8 MBytes  9.21 Mbits/sec                  receiver
+[197]   0.00-60.00  sec  73.8 MBytes  10.3 Mbits/sec  320             sender
+[197]   0.00-60.00  sec  68.5 MBytes  9.57 Mbits/sec                  receiver
+[199]   0.00-60.00  sec  33.8 MBytes  4.72 Mbits/sec  153             sender
+[199]   0.00-60.00  sec  28.3 MBytes  3.96 Mbits/sec                  receiver
+[201]   0.00-60.00  sec  75.0 MBytes  10.5 Mbits/sec  404             sender
+[201]   0.00-60.00  sec  69.5 MBytes  9.71 Mbits/sec                  receiver
+[203]   0.00-60.00  sec  72.5 MBytes  10.1 Mbits/sec  226             sender
+[203]   0.00-60.00  sec  67.2 MBytes  9.39 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  7.03 GBytes  1.01 Gbits/sec  37331             sender
+[SUM]   0.00-60.00  sec  6.50 GBytes   931 Mbits/sec                  receiver
+-- so for this case cubic and PK3C working similar (cubic better and more smooth).
+
+
+One more case of 10 connections from USA to Israel (like reallife example of bad internet channel):
+cubic using kernel4:
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  7.50 MBytes  1.05 Mbits/sec   89             sender
+[  5]   0.00-60.00  sec  2.35 MBytes   328 Kbits/sec                  receiver
+[  7]   0.00-60.00  sec  10.0 MBytes  1.40 Mbits/sec   55             sender
+[  7]   0.00-60.00  sec  5.14 MBytes   719 Kbits/sec                  receiver
+[  9]   0.00-60.00  sec  7.50 MBytes  1.05 Mbits/sec   97             sender
+[  9]   0.00-60.00  sec  2.69 MBytes   376 Kbits/sec                  receiver
+[ 11]   0.00-60.00  sec  8.75 MBytes  1.22 Mbits/sec   71             sender
+[ 11]   0.00-60.00  sec  3.44 MBytes   481 Kbits/sec                  receiver
+[ 13]   0.00-60.00  sec  10.0 MBytes  1.40 Mbits/sec   68             sender
+[ 13]   0.00-60.00  sec  4.84 MBytes   676 Kbits/sec                  receiver
+[ 15]   0.00-60.00  sec  8.75 MBytes  1.22 Mbits/sec   85             sender
+[ 15]   0.00-60.00  sec  3.09 MBytes   432 Kbits/sec                  receiver
+[ 17]   0.00-60.00  sec  8.75 MBytes  1.22 Mbits/sec   73             sender
+[ 17]   0.00-60.00  sec  3.81 MBytes   532 Kbits/sec                  receiver
+[ 19]   0.00-60.00  sec  7.50 MBytes  1.05 Mbits/sec   90             sender
+[ 19]   0.00-60.00  sec  2.68 MBytes   375 Kbits/sec                  receiver
+[ 21]   0.00-60.00  sec  8.75 MBytes  1.22 Mbits/sec   75             sender
+[ 21]   0.00-60.00  sec  3.19 MBytes   445 Kbits/sec                  receiver
+[ 23]   0.00-60.00  sec  11.2 MBytes  1.57 Mbits/sec   57             sender
+[ 23]   0.00-60.00  sec  5.32 MBytes   744 Kbits/sec                  receiver
+[SUM]   0.00-60.00  sec  88.8 MBytes  12.4 Mbits/sec  760             sender
+[SUM]   0.00-60.00  sec  36.5 MBytes  5.11 Mbits/sec                  receiver
+
+PK3C using kernel4:
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  428             sender
+[  5]   0.00-30.21  sec  2.07 MBytes   575 Kbits/sec                  receiver
+[  7]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  375             sender
+[  7]   0.00-30.21  sec  1.68 MBytes   468 Kbits/sec                  receiver
+[  9]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  369             sender
+[  9]   0.00-30.21  sec  1.83 MBytes   509 Kbits/sec                  receiver
+[ 11]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  362             sender
+[ 11]   0.00-30.21  sec  1.56 MBytes   432 Kbits/sec                  receiver
+[ 13]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  404             sender
+[ 13]   0.00-30.21  sec  1.78 MBytes   495 Kbits/sec                  receiver
+[ 15]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  374             sender
+[ 15]   0.00-30.21  sec  1.53 MBytes   425 Kbits/sec                  receiver
+[ 17]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  429             sender
+[ 17]   0.00-30.21  sec  1.87 MBytes   519 Kbits/sec                  receiver
+[ 19]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  359             sender
+[ 19]   0.00-30.21  sec  1.60 MBytes   444 Kbits/sec                  receiver
+[ 21]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  484             sender
+[ 21]   0.00-30.21  sec  2.68 MBytes   744 Kbits/sec                  receiver
+[ 23]   0.00-30.21  sec  7.50 MBytes  2.08 Mbits/sec  364             sender
+[ 23]   0.00-30.21  sec  1.58 MBytes   439 Kbits/sec                  receiver
+[SUM]   0.00-30.21  sec  75.0 MBytes  20.8 Mbits/sec  3948             sender
+[SUM]   0.00-30.21  sec  18.2 MBytes  5.05 Mbits/sec                  receiver
+-- seeing that similar result, but PK3C forcing higher amount of Retr (means PK3C could work faster if Cubic would not work the best for this case).
+
+
+And similar for 3 connections (from USA to Israel):
+PK3C:
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-30.19  sec  11.2 MBytes  3.13 Mbits/sec  291             sender
+[  5]   0.00-30.19  sec  5.81 MBytes  1.61 Mbits/sec                  receiver
+[  7]   0.00-30.19  sec  12.5 MBytes  3.47 Mbits/sec  340             sender
+[  7]   0.00-30.19  sec  6.63 MBytes  1.84 Mbits/sec                  receiver
+[  9]   0.00-30.19  sec  11.2 MBytes  3.13 Mbits/sec  287             sender
+[  9]   0.00-30.19  sec  5.61 MBytes  1.56 Mbits/sec                  receiver
+[SUM]   0.00-30.19  sec  35.0 MBytes  9.73 Mbits/sec  918             sender
+[SUM]   0.00-30.19  sec  18.1 MBytes  5.02 Mbits/sec                  receiver
+    -- and from receiver point of view slow-start worked well (stabilization happened in about 5 seconds and without pushing too much data to the channel):
+[ ID] Interval           Transfer     Bandwidth
+[  5]   0.00-1.00   sec   143 KBytes  1.17 Mbits/sec                  
+[  7]   0.00-1.00   sec  65.0 KBytes   533 Kbits/sec                  
+[  9]   0.00-1.00   sec  83.4 KBytes   683 Kbits/sec                  
+[SUM]   0.00-1.00   sec   291 KBytes  2.39 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec   192 KBytes  1.58 Mbits/sec                  
+[  7]   1.00-2.00   sec   117 KBytes   962 Kbits/sec                  
+[  9]   1.00-2.00   sec   218 KBytes  1.78 Mbits/sec                  
+[SUM]   1.00-2.00   sec   527 KBytes  4.32 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec   232 KBytes  1.90 Mbits/sec                  
+[  7]   2.00-3.00   sec   311 KBytes  2.55 Mbits/sec                  
+[  9]   2.00-3.00   sec   266 KBytes  2.18 Mbits/sec                  
+[SUM]   2.00-3.00   sec   809 KBytes  6.63 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec   119 KBytes   973 Kbits/sec                  
+[  7]   3.00-4.00   sec   206 KBytes  1.69 Mbits/sec                  
+[  9]   3.00-4.00   sec   133 KBytes  1.09 Mbits/sec                  
+[SUM]   3.00-4.00   sec   458 KBytes  3.75 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec   223 KBytes  1.83 Mbits/sec                  
+[  7]   4.00-5.00   sec   291 KBytes  2.39 Mbits/sec                  
+[  9]   4.00-5.00   sec   144 KBytes  1.18 Mbits/sec                  
+[SUM]   4.00-5.00   sec   659 KBytes  5.40 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec   279 KBytes  2.28 Mbits/sec                  
+[  7]   5.00-6.00   sec   356 KBytes  2.92 Mbits/sec                  
+[  9]   5.00-6.00   sec   242 KBytes  1.98 Mbits/sec                  
+[SUM]   5.00-6.00   sec   877 KBytes  7.18 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec   187 KBytes  1.53 Mbits/sec                  
+[  7]   6.00-7.00   sec   270 KBytes  2.21 Mbits/sec                  
+[  9]   6.00-7.00   sec   167 KBytes  1.37 Mbits/sec                  
+[SUM]   6.00-7.00   sec   624 KBytes  5.11 Mbits/sec
+...
+
+, and similar for cubic:
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  17.5 MBytes  2.45 Mbits/sec   43             sender
+[  5]   0.00-60.00  sec  12.0 MBytes  1.68 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  12.5 MBytes  1.75 Mbits/sec   95             sender
+[  7]   0.00-60.00  sec  6.78 MBytes   948 Kbits/sec                  receiver
+[  9]   0.00-60.00  sec  23.8 MBytes  3.32 Mbits/sec   18             sender
+[  9]   0.00-60.00  sec  18.0 MBytes  2.51 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  53.8 MBytes  7.51 Mbits/sec  156             sender
+[SUM]   0.00-60.00  sec  36.7 MBytes  5.14 Mbits/sec                  receiver
+   -- so cubic worked worse regarding being less smooth, see 948 KBits above and for PK3C all results were higher than 1.56 MBits/sec, and slow start for cubic:
+[ ID] Interval           Transfer     Bandwidth
+[  5]   0.00-1.00   sec   181 KBytes  1.48 Mbits/sec                  
+[  7]   0.00-1.00   sec   148 KBytes  1.22 Mbits/sec                  
+[  9]   0.00-1.00   sec   126 KBytes  1.03 Mbits/sec                  
+[SUM]   0.00-1.00   sec   455 KBytes  3.73 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec   277 KBytes  2.27 Mbits/sec                  
+[  7]   1.00-2.00   sec   160 KBytes  1.31 Mbits/sec                  
+[  9]   1.00-2.00   sec   205 KBytes  1.68 Mbits/sec                  
+[SUM]   1.00-2.00   sec   642 KBytes  5.26 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec   262 KBytes  2.14 Mbits/sec                  
+[  7]   2.00-3.00   sec   156 KBytes  1.27 Mbits/sec                  
+[  9]   2.00-3.00   sec   221 KBytes  1.81 Mbits/sec                  
+[SUM]   2.00-3.00   sec   638 KBytes  5.22 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec   255 KBytes  2.09 Mbits/sec                  
+[  7]   3.00-4.00   sec   153 KBytes  1.25 Mbits/sec                  
+[  9]   3.00-4.00   sec   218 KBytes  1.78 Mbits/sec                  
+[SUM]   3.00-4.00   sec   625 KBytes  5.12 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec   225 KBytes  1.84 Mbits/sec                  
+[  7]   4.00-5.00   sec   164 KBytes  1.34 Mbits/sec                  
+[  9]   4.00-5.00   sec   235 KBytes  1.92 Mbits/sec                  
+[SUM]   4.00-5.00   sec   624 KBytes  5.11 Mbits/sec
+
+, and 3 connections from USA to Israel for kernel3 with PK3C:
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-30.21  sec  15.0 MBytes  4.16 Mbits/sec  8449             sender
+[  5]   0.00-30.21  sec  11.6 MBytes  3.21 Mbits/sec                  receiver
+[  7]   0.00-30.21  sec  8.75 MBytes  2.43 Mbits/sec  4395             sender
+[  7]   0.00-30.21  sec  5.03 MBytes  1.40 Mbits/sec                  receiver
+[  9]   0.00-30.21  sec  3.75 MBytes  1.04 Mbits/sec  1120             sender
+[  9]   0.00-30.21  sec   464 KBytes   126 Kbits/sec                  receiver
+[SUM]   0.00-30.21  sec  27.5 MBytes  7.64 Mbits/sec  13964             sender
+[SUM]   0.00-30.21  sec  17.0 MBytes  4.73 Mbits/sec                  receiver
+
+
+, and 3 connections from USA to Israel for kernel4 with cubic (if using cell-phone internet with higher RTT):
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-60.26  sec  16.2 MBytes  2.26 Mbits/sec   42             sender
+[  5]   0.00-60.26  sec  10.3 MBytes  1.43 Mbits/sec                  receiver
+[  7]   0.00-60.26  sec  17.5 MBytes  2.44 Mbits/sec   52             sender
+[  7]   0.00-60.26  sec  11.7 MBytes  1.62 Mbits/sec                  receiver
+[  9]   0.00-60.26  sec  17.5 MBytes  2.44 Mbits/sec   50             sender
+[  9]   0.00-60.26  sec  11.9 MBytes  1.65 Mbits/sec                  receiver
+[SUM]   0.00-60.26  sec  51.2 MBytes  7.13 Mbits/sec  144             sender
+[SUM]   0.00-60.26  sec  33.8 MBytes  4.70 Mbits/sec                  receiver
+
+, and similar 3 connections from USA to Israel for kernel4 with PK3C (if using cell-phone internet with higher RTT):
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-60.00  sec  18.8 MBytes  2.62 Mbits/sec  401             sender
+[  5]   0.00-60.00  sec  12.5 MBytes  1.75 Mbits/sec                  receiver
+[  7]   0.00-60.00  sec  16.2 MBytes  2.27 Mbits/sec  235             sender
+[  7]   0.00-60.00  sec  10.6 MBytes  1.48 Mbits/sec                  receiver
+[  9]   0.00-60.00  sec  17.5 MBytes  2.45 Mbits/sec  239             sender
+[  9]   0.00-60.00  sec  11.8 MBytes  1.66 Mbits/sec                  receiver
+[SUM]   0.00-60.00  sec  52.5 MBytes  7.34 Mbits/sec  875             sender
+[SUM]   0.00-60.00  sec  34.9 MBytes  4.88 Mbits/sec                  receiver
