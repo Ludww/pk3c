@@ -1,44 +1,54 @@
-This is TCP/IP congestion control for video streaming/data servers.
+---
+title: TCP/IP congestion control PK3C Kernel Module for video streaming/data servers.
+---
+
+## What is this?
+
 First, read "understanding": https://granulate.io/understanding-congestion-control/
 
-How to improve for free quality of network connections?
-How to make upload data faster (up to 5 times faster!) for your workstation?
-How to make download data faster for your servers?
-If you don't know what all this about, then read first about Cubic congestion control ( https://en.wikipedia.org/wiki/CUBIC_TCP ) and then about similar Google project BBR that is more in common with this project (than if comparing with Cubic).
+Then, this project will help to:
+* **improve for free quality of network connections**
+* **make upload data faster for your workstation**
+* **make download data faster from your servers**
 
-These graphs shows upload test by speed.io (both works and working differently):
+Also read first about Wiki page Cubic congestion control ( https://en.wikipedia.org/wiki/CUBIC_TCP ) and then about similar Google project BBR that has more in common with this PK3C project (than if comparing PK3C with default Cubic).
 
-, the PK3C makes decision about best upload speed faster (without trying too high):
+## Some funny pictures for getting some idea
+
+These graphs shows upload test by speed.io for one connection (and you can see that both default Cubic congestion algorithm and new PK3C does it job):
 
 ![Alt text](/imgs/PK3CUpload.gif?raw=true "PK3C Upload graph")
 
-, and for one connection the Cubic is a little bit faster:
+- the PK3C makes decision about best upload speed faster (without trying too high);
 
 ![Alt text](/imgs/CubicUpload.gif?raw=true "Cubic Upload graph")
 
-!!! The most funny thing that this PK3C is sending data more aggressively than Cubic, so if few Cubic connections and few PK3C connections
-share the same link, then PK3C wins (about 5 times wins!)!
-This is the answer to question why Google uses BBR instead of Cubic (because they wants their traffic to be downloadable faster than from other server that are uses non-BBR).
-Both it means that this PK3C project could be usefull not only for servers, but both for your workstation (because both connections initiation goint to be faster and both upload data from your workstation would be faster).
+- and for the Cubic overall for one connection is a little bit faster.
 
-Take in mind that this PK3C project has nothing in common with any other versions of PCC project, so the new name PK3C suppose to show that
-it is based on original https://github.com/PCCproject/PCC-Kernel project that is under BSD/Gplv2 , so original PCC-Kernel included in subdir PCC-Kernel for history reasons
-(this PK3C based on original PCC opensource code (included in ./PCC-Kernel/* );
-you may find some other related to PCC projects like some userspace control utility, see https://github.com/PCCproject/PCC-Uspace , and some links to original
-papers there in PCC-Uspace that are relevant both for PCC-Kernel and regarding original parts taken from PCC-Kernel for this PK3C too,
-but this PK3C project is independent and currently not compatible with this PCC-Uspace utility; generally, see LICENSE and ask questions inside github or privately
-to ludwigschapiro@gmail.com , so I'm Ludwig and I'm author of diff from PCC-Kernel to
-this PK3C;
-found one other similar project that is based on original PCC-Kernel: https://github.com/KaiwenZha/PCC-Vivace
-, but as far as I know this PK3C gives better results than PCC-Vivace ).
+## Interesting note
 
-This one is for TCP/IP, but there are other solutions of congestion problem for other protocols (ex. DCCP protocol that is suppose to be better, than TCP/IP or "UDP";
-and with better congestion than any in TCP/IP). However, the DCCP is not yet common (not supported and not known), and TCP/IP is the today most used (apart from UDP without congestion or congestion above raw UDP protocol),
-so the projects like this PK3C that are for TCP/IP are still actual today (so I recomend you to try using this PK3C instead of Cubic).
+* **!Even for one connection PK3C could be a little bit slower, for many connections PK3C sending data more aggressively than Cubic, so if few Cubic connections and few PK3C connections share the same link, then PK3C wins (up to 5 times wins!)!**
+I think this is the answer the to question why Google uses BBR instead of Cubic (because they want their traffic to be downloadable faster than from other servers that are uses defaults that are non-BBR). The Google says that BRR about 20% faster, than Cubic.
 
+Both it means that this PK3C project could be usefull not only for servers, but both for your workstation (because both connections initiation should be faster and both upload data from your workstation would be faster a little bit faster at least for short-time connections where no need "try-guess-initial-time" for PK3C comparing to Cubic).
 
+## Comparing PK3C with PCC
 
-Installation
+Take in mind that this PK3C project has nothing in common with any other nowadays versions of PCC project. The new name PK3C (comparing to older PCC) suppose to show that even is based on original https://github.com/PCCproject/PCC-Kernel project that is under BSD/Gplv2 (and original PCC-Kernel included in subdir ./PCC-Kernel/* for history reasons), this PK3C is different.
+
+You may find some other related to PCC projects like some userspace control utility (see https://github.com/PCCproject/PCC-Uspace, and some links to original
+papers there in PCC-Uspace that are relevant both for PCC-Kernel and for this PK3C). The original parts of code taken from PCC-Kernel for this PK3C described in papers there.
+
+This PK3C project is independent and currently not compatible with this PCC-Uspace utility; see LICENSE and ask questions inside github or privately
+to ludwigschapiro@gmail.com , so I'm Ludww and I'm author of diff from PCC-Kernel to this PK3C.
+
+Found one other similar project that is based on original PCC-Kernel: https://github.com/KaiwenZha/PCC-Vivace (but as far as I know PK3C gives better results than PCC-Vivace, even it is still uses Vivace utility function too).
+
+## Comparing PK3C with DCCP and other future congestion control algs
+
+This one is for TCP/IP, but there are other solutions of congestion problem for other protocols (ex. DCCP protocol that is suppose to be better, than TCP/IP or "UDP"; and with better congestion than any in TCP/IP). However, the DCCP is not yet common (not supported and not known), and TCP/IP is the today most used (apart from UDP that is being used everywhere too where UDP could be without congestion or could be congestion above raw UDP protocol), so the projects like this PK3C that are for TCP/IP are still actual today (so I recomend you to try using this PK3C instead of Cubic or to compare it with BBR from Google).
+
+## Installation
 
 git clone https://github.com/Ludww/pk3c.git
 
