@@ -73,6 +73,7 @@ to dir ``/usr/src/kernels/3.10.0-1127.el7.x86_64``
 For compiling module, just run:
 
 ``sudo make clean``
+
 ``sudo make``
 
 For testing if compiled well, this last cmd (that "install" the module until reboot):
@@ -82,9 +83,13 @@ For testing if compiled well, this last cmd (that "install" the module until reb
 , and as root run these five commands (after module loaded and for making all uploading outside TCP/IP connections to use PK3C):
 
 ``sudo sysctl -w net.core.wmem_max=8194300``
+
 ``sudo sysctl -w net.ipv4.tcp_wmem="4096 8194300 8194300"``
+
 ``sudo sysctl -w net.core.rmem_max=4258291``
+
 ``sudo sysctl -w net.ipv4.tcp_rmem="4096 8194300 8194300"``
+
 ``echo "pk3c" > /proc/sys/net/ipv4/tcp_congestion_control``
 
 Enjoy!
@@ -104,9 +109,13 @@ Take in mind that one file upload test is nothing and instead you should try 100
 or for comparing with Cubic maybe try simpler 5 connections together running ``/bin/bash ./a.sh`` where ``cat ./a.sh`` below and ``server`` is remote server, ex. from your local workstation 5 uploads to the server in Google Cloud:
 
 ``time scp ./IMG_7700.MOV user@server:~/1 &``
+
 ``time scp ./IMG_7700.MOV user@server:~/2 &``
+
 ``time scp ./IMG_7700.MOV user@server:~/3 &``
+
 ``time scp ./IMG_7700.MOV user@server:~/4 &``
+
 ``time scp ./IMG_7700.MOV user@server:~/5 &``
 
 - with PK3C this should work about %20 faster, than if with default Cubic.
@@ -154,21 +163,35 @@ Also this module tested with 10Gb+ networks with multi (tousants) connections. R
 Note that for kernel 3 need to run this configuration (shell script commands) before usage of the PK3C (where $1 is eth interface name), and because for kernel 3 the rate congestion control algorithms were not supported yet, there are many shell commands for configuration of ``tc qdisc`` (and for kernel 4 or higher most of these command not required anymore):
 
 ``sudo ethtool -K $1 gso off``
+
 ``sudo ethtool -K $1 tso off``
+
 ``sudo ethtool -K $1 gro off``
+
 ``sudo sysctl -w net.core.default_qdisc=fq``
+
 ``sudo sysctl -w net.core.wmem_max=8194300``
+
 ``sudo sysctl -w net.ipv4.tcp_wmem="4096 8194300 8194300"``
+
 ``sudo sysctl -w net.core.rmem_max=4258291``
+
 ``sudo sysctl -w net.ipv4.tcp_rmem="4096 8194300 8194300"``
+
 ``tc qdisc replace dev $1 root fq pacing maxrate 32gbit``
+
 ``tc qdisc replace dev $1 root fq pacing maxrate 32gbit flow_limit 10000 refill_delay 2 limit 10000 buckets 3023 quantum 10000 initial_quantum 15140``
 
 , and for kernel 4 just *mem* sysctl command are enough:
+
 ``sudo sysctl -w net.core.wmem_max=8194300``
+
 ``sudo sysctl -w net.ipv4.tcp_wmem="4096 8194300 8194300"``
+
 ``sudo sysctl -w net.core.rmem_max=4258291``
+
 ``sudo sysctl -w net.ipv4.tcp_rmem="4096 8194300 8194300"``
+
 (and probably not necessary).
 
 
