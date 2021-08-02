@@ -1315,7 +1315,7 @@ static void pk3c_decide_slow_start(struct sock *sk, struct pk3c_data *pk3c)
 		pk3c->nums->rate = interval->rate; // Overall, make slow-start less aggressive (like througput x 1.5 each step instead of rate=rate + rate/2 , see above),
 		                                   // because other case overflow happens for low-rate connections
 
-		cprintk(KERN_INFO "%d pk3c_decide_slow_start set interval->rate = %i thr = %lu    util %li > %li\n", pk3c->nums->id, interval->rate, pk3c->nums->thr, utility, prev_utility);
+		cprintk(KERN_INFO "%d pk3c_decide_slow_start set interval->rate = %i thr = %lu\n", pk3c->nums->id, interval->rate, pk3c->nums->thr);
 		pk3c->send_index = 0;
 		interval->send_start = 0;
 		interval->send_end = 0;
