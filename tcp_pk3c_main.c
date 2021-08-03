@@ -6,42 +6,46 @@
  * 1. Calculated throughput becomes much lower than real when coming close to congestion (means can calculate correctly throughput only when optimal rate);
  * 2. Rtt often non reliable for Kernel 3 (so calculating avg rtt in different way than usually for skipping max/min incorrect values);
  * 3. The utility function (taken originally from PCC) based on RTT and Lose works Ok only for rates higher than 25000 (so
- *    this current version of PK3C doesn't work for less than 250KBits/sec links, but can think to use later regular Cubic or Reno when < 25000)
+ *    this current version of PK3C doesn't work for less than 250KBits/sec links, but can think to use later regular Cubic or Reno when < 25000,
+ *    and similer way new Cubic did that using from 2006 new Cubic for higher rate links and keeping previous TCP/IP behaviour for lower rate links)
  *    - the reason that original PCC does every "experiment" (originally one "experiment" is 50 packets measurement, but later upgraded, see below)
  *    and then measures results after this experiment (looking the way how utility function changes or simpler to say of amount of loss and rtt increases or decreases),
- *    but for low rates original PCC cannot see input signals, because of noisy being stronger than such signal (and both reaction to previous experiment too slow for seeing it
- *    immediatelly), so the original idea by PCC can work good only with fast enough connections;
+ *    but for lower rates original PCC cannot react on input signals good enough, because of noise being stronger than such input signal
+ *    (and both reaction to previous experiment too slow for seeing it fast enough), so the original idea by PCC can work good only with fast enough connections;
  *    second problem (apart that original PCC doesn't work good with low rates) is that it doesn't work at all for low latency
  *    (if latency less than about 5ms, means ping gives 4/1000sec or less, then utility function gives something random and as result PCC doesn't converge);
- *    - however, did some experiments with addition of minrate/maxrate (exists in this PK3C) and addition of random changes UP/DOWN (commented in this source with
- *    marks "POINT") and with these additions together PK3C starts working reasonably with very low latencies too;
+ *    - however, did some experiments with addition of minrate/maxrate (exists in this PK3C) and addition of random changes UP/DOWN (for seeing it find in this source all
+ *    the usage of minrate and maxrate), and with these additions (minrate/maxrate) together with original PCC logic the PK3C starts working reasonably with very low latencies too;
  * 4. The amount of loss calculated differently comparing to original PCC (the idea is to calculate it using info about current sending buffer
  *    and info about acked packets for marking packets as loss if both exists in resend buffer and both hole in acked, but before RTO happened,
  *    so before socket value "lost-out" increased);
  * 5. Non obvious part of PK3C is slow-start: 
  *    a. Originally PCC did double rate during slow-start until loss detected (similar like Cubic does), but for some cases like local direct wire connections
- *       loss doesn't happen at all (for example because flow control buffers too small and max pacing rate then controlled by receiver), so need some
- *       additional condition to stop slow-start (the addition condition is HANDBRAKE for comparing current rate with thoughput and if current
- *       rate 3 times higher than throughput or throughput started decrese, then stop slow-start, and both for making it work during slow start similar
- *       way for all connections, for regular end of slow-start try to stop with throughput*3/2 similar way like of SLOW DEBUG start handbrake);
+ *       loss didn't happen at all (for example because flow control buffers too small and max pacing rate then controlled by receiver), so need some
+ *       additional condition to stop slow-start (the addition condition is based on throughput for comparing current rate with thoughput and if current
+ *       rate much higher than throughput or throughput started decrease, then stop slow-start to some optimal point 1/3 higher than detected throughput);
  *       The formula to calculate utility func during slow start is
  *       "util = rate - (rate * (loss_penalty * loss_ratio)) / PCC_SCALE;" (see in code below)
  *       and loss_penalty is const==25;
- *       and original PCC stop slow-start when next calculated util less than prev;
+ *       and original PCC did stop slow-start when next calculated util less than prev (this condition kept too as additional OR possibility for end of slow-start);
  *       also tried to use rtt inside this formula too some time before, but it didn't help at all (mostly because of noise when rtt can change both directions
  *       both before optimal rate found during slow-start and after);
- *       so for PK3C using both loss-based slow-start stop (similar to PCC) and additional Handbrake (that is required for very low rates like 25000 or lower);
- *    b. The other problem of original PCC is that it takes too much time during slow-start (like it goes too high before it understand that need to stop slow-start),
- *       so first in PK3C did decrease amount of packets during slow-start (can be about 15, see const MIN_PACKETS_PER_INTERVAL, per interval when slow-start) and
+ *       so for PK3C using both loss-based slow-start stop (similar to PCC) and additionaly stop slow start on throughput detection (that is required for very low rates,
+ *       because PK3C start from quite high probing rate and can jump imideatelly to optimal throughput detected if lower rate before channel overflow happen);
+ *       The original PCC started from much lower rate, than PK3C, and as result original PCC can take few times longer period of time for slow-start, then PK3C.
+ *    b. The other problem of original PCC is that it often goes too high during slow-start (like it can overflow the buffers too much before it understand that need to stop slow-start),
+ *       so first in PK3C did decrease amount of packets during slow-start (can be about 15 per experiment, see const MIN_PACKETS_PER_INTERVAL, means per interval when slow-start) and
  *       second start from high rate as first step of slow-start (like rate == PCC_RATE_MIN * 512 * 6 that is about 300000 that is ~3MBs/sec),
- *       and as result slow-start (for rates from 256KBits to very high like 10Gb/s) finishes the same fast (or faster) like Cubic does. And no need
- *       to wait about 20 seconds during slow-start like in original PCC was.
+ *       and as result slow-start (for rates from 256KBits to very high like 10Gb/s) finishes the same fast (or faster) like Cubic does. And as result in PK3C no need
+ *       to wait about 20 seconds during slow-start like in original PCC was (and in PK3C now slow-start happens in much less than 1 second in most cases and you can feel it well when browsing
+ *       Internet with PK3C, so it becomes useful for Workstations too).
  * 6. The original PCC tried to work the same way both for high rates and low rates connections.
  *       As result, the higher rate connections utilized all the channel and the lower rate worked few times slower, and for solving this issue:
- *    a. Added fast-moving mode (so low-rate connection knows that it is low-rate and increases rate very fast with smallest few packets intervals
+ *    a. Added fast-moving mode (so low-rate connections knows that it is low-rate and increases rate very fast based on small few packets intervals
  *       until some condition);
  *    b. Did some differentiation in amount of packets per interval (so for high speed connection can be 300 packets per interval and for lower rate 50 packets
  *       and if slow-start or moving-fast, then 15 packets for slow-start or even lower amount of packets than 15 for moving-fast).
+ *    c. On some additional conditions (based on minrate/maxrate), can switch to fast-moving again (from regular PCC kind mode) even after converge happened.
  */
 
 
@@ -516,7 +520,6 @@ static void pk3c_calc_utility_vivace(struct pk3c_data *pk3c, struct pk3c_interva
 		if(pk3c->nums->lostcnt)
 			pk3c->nums->lostcnt--;
 
-        // POINTB
 	if(!pk3c->start_mode && lost && !pk3c->nums->cnt_no_lost_intervals &&
 	   !pk3c->moving_fast &&
 	   snt > 12
@@ -1244,9 +1247,6 @@ static void pk3c_decide_fastmoving(struct sock *sk, struct pk3c_data *pk3c)
 			if(pk3c->lrtt > 100 && pk3c->lrtt < 500000) {
 				rate_decrease =	tp->mss_cache * (1000000/pk3c->lrtt);
 			}
-
-//			if(pk3c->nums->rate-rate_decrease/8 > ((pk3c->nums->maxrate+pk3c->nums->minrate)/2 - (pk3c->nums->maxrate+pk3c->nums->minrate)/4) )	
-//				pk3c->nums->rate -= rate_decrease/8;
 		} else {
 			pk3c->nums->rate = new_rate;
 		}
