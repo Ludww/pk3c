@@ -1792,7 +1792,9 @@ static void __exit pk3ctcp_unregister(void)
 module_init(pk3ctcp_register);
 module_exit(pk3ctcp_unregister);
 
-MODULE_AUTHOR("Ludwig Munchausen");
+MODULE_AUTHOR("Nogah Frankel <nogah.frankel@gmail.com>");
+MODULE_AUTHOR("Ludww <ludwigschapiro@gmail.com>");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION(STR_CONST_MODULE_NAME);
 MODULE_VERSION(STR_CONST_MODULE_VERSION);
+
