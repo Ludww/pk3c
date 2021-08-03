@@ -15,7 +15,9 @@
  *    second problem (apart that original PCC doesn't work good with low rates) is that it doesn't work at all for low latency
  *    (if latency less than about 5ms, means ping gives 4/1000sec or less, then utility function gives something random and as result PCC doesn't converge);
  *    - however, did some experiments with addition of minrate/maxrate (exists in this PK3C) and addition of random changes UP/DOWN (for seeing it find in this source all
- *    the usage of minrate and maxrate), and with these additions (minrate/maxrate) together with original PCC logic the PK3C starts working reasonably with very low latencies too;
+ *    the usage of minrate and maxrate), and with these additions (minrate/maxrate) together with original PCC logic the PK3C starts working reasonably with very low latencies too,
+ *    and more important that PK3C uses connections fair enough at least when PK3C competitive connections with similar PK3C connections (and original PCC often didn't utilize channel well
+ *    like one connection could be much faster than other or slower than other);
  * 4. The amount of loss calculated differently comparing to original PCC (the idea is to calculate it using info about current sending buffer
  *    and info about acked packets for marking packets as loss if both exists in resend buffer and both hole in acked, but before RTO happened,
  *    so before socket value "lost-out" increased);
