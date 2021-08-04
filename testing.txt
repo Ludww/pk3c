@@ -1500,5 +1500,3 @@ and 100 similar local connections with PK3C (using kernel40:
 [SUM]   0.00-60.00  sec  7.03 GBytes  1.01 Gbits/sec  37331             sender
 [SUM]   0.00-60.00  sec  6.50 GBytes   931 Mbits/sec                  receiver
 -- so for this case cubic and PK3C working similar (cubic better and more smooth).
-
-
